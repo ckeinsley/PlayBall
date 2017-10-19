@@ -8,9 +8,6 @@ import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.MasterNotRunningException;
 import org.apache.hadoop.hbase.ZooKeeperConnectionException;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
-import org.apache.log4j.RollingFileAppender;
 
 import com.google.protobuf.ServiceException;
 
@@ -55,8 +52,6 @@ public class Main {
 	private void connect()
 			throws MasterNotRunningException, ZooKeeperConnectionException, ServiceException, IOException {
 		Configuration config = HBaseConfiguration.create();
-		config.set("hbase.zookeeper.quorum", "localhost");
-		config.set("hbase.zooker.property.clientPort", "2181");
 		HBaseAdmin.checkHBaseAvailable(config);
 	}
 
@@ -66,22 +61,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		initLogger();
 		Main main = new Main();
 		main.run();
-	}
-
-	public static void initLogger() {
-		try {
-			String filePath = "Log.log";
-			PatternLayout layout = new PatternLayout("%-5p %d %m%n");
-			RollingFileAppender appender = new RollingFileAppender(layout, filePath);
-			appender.setName("myFirstLog");
-			appender.setMaxFileSize("1MB");
-			appender.activateOptions();
-			Logger.getRootLogger().addAppender(appender);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }
