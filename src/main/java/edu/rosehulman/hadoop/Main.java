@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.MasterNotRunningException;
 import org.apache.hadoop.hbase.ZooKeeperConnectionException;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
+import org.apache.log4j.RollingFileAppender;
 
 import com.google.protobuf.ServiceException;
 
@@ -64,7 +66,22 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+		initLogger();
 		Main main = new Main();
 		main.run();
+	}
+
+	public static void initLogger() {
+		try {
+			String filePath = "Log.log";
+			PatternLayout layout = new PatternLayout("%-5p %d %m%n");
+			RollingFileAppender appender = new RollingFileAppender(layout, filePath);
+			appender.setName("myFirstLog");
+			appender.setMaxFileSize("1MB");
+			appender.activateOptions();
+			Logger.getRootLogger().addAppender(appender);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
