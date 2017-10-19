@@ -45,6 +45,7 @@ public class Main {
 			e.printStackTrace();
 			System.out.println("IOException when connecting");
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.err.println("I CAUGHT AN ERROR. FIX THIS LATER");
 		}
 	}
