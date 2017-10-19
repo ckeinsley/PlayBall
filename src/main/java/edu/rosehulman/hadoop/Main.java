@@ -52,10 +52,14 @@ public class Main {
 
 	private void connect()
 			throws MasterNotRunningException, ZooKeeperConnectionException, ServiceException, IOException {
-		Configuration config = HBaseConfiguration.create();
 		String path = this.getClass().getClassLoader().getResource("hbase-site.xml").getPath();
+		System.out.println("alpha");
+		Configuration config = HBaseConfiguration.create();
+		System.out.println("beta");
 		config.addResource(new Path(path));
+		System.out.println("charlie");
 		HBaseAdmin.checkHBaseAvailable(config);
+		System.out.println("delta");
 	}
 
 	public void exit() {
