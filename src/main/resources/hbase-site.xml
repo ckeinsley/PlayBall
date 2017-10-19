@@ -1,0 +1,6 @@
+<configuration>
+	<property>
+		<name>hbase.name</name>
+		<value>localhost</value>
+	</property>
+</configuration>
