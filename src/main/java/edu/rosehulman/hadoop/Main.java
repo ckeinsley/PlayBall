@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.MasterNotRunningException;
 import org.apache.hadoop.hbase.ZooKeeperConnectionException;
@@ -55,6 +56,8 @@ public class Main {
 	private void connect()
 			throws MasterNotRunningException, ZooKeeperConnectionException, ServiceException, IOException {
 		Configuration config = HBaseConfiguration.create();
+		String path = this.getClass().getClassLoader().getResource("hbase-site.xml").getPath();
+		config.addResource(new Path(path));
 		HBaseAdmin.checkHBaseAvailable(config);
 	}
 
@@ -71,7 +74,7 @@ public class Main {
 
 	public static void initLogger() {
 		try {
-			String filePath = "D:/mylog.log";
+			String filePath = "logPlayBall.log";
 			PatternLayout layout = new PatternLayout("%-5p %d %m%n");
 			RollingFileAppender appender = new RollingFileAppender(layout, filePath);
 			appender.setName("myFirstLog");
