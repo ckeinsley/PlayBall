@@ -58,7 +58,7 @@ public class Main {
 		Configuration config = HBaseConfiguration.create();
 		System.out.println("config = " + config);
 		config.set("hbase.zookeepr.quorum", "hadoop-m1.c.hadoop-play.ball.internal");
-		config.set("hbase.zookeeper.property.clientPort", "10.128.0.3:2181, 10.128.0.4:2181", "10.128.0.5:2181");
+		config.set("hbase.zookeeper.property.clientPort", "35.188.56.13:2181, 104.198.206.210:2181", "104.154.140.30:2181");
 		HBaseAdmin.checkHBaseAvailable(config);
 	}
 
