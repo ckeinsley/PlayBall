@@ -55,13 +55,9 @@ public class Main {
 
 	private void connect()
 			throws MasterNotRunningException, ZooKeeperConnectionException, ServiceException, IOException {
-//		System.out.println("EPSILON");
-//		String path1 = getClass().getClassLoader().getResource("hbase-site.xml").getPath();
-		System.out.println("ALPHA");
-		String path = getClass().getResource("hbase-site.xml").getPath();
-		System.out.println("BETA");
 		Configuration config = HBaseConfiguration.create();
-		config.addResource(new Path(path));
+		config.set("hbase.zookeepr.quorum", "hadoop-m1.c.hadoop-play.ball.internal");
+		config.set("hbase.zookeeper.property.clientPort", "2181");
 		HBaseAdmin.checkHBaseAvailable(config);
 	}
 
