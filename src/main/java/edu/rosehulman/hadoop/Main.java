@@ -45,10 +45,15 @@ public class Main {
 	}
 
 	private void connect() throws IOException {
+		System.out.println("Constructing Config");
 		Configuration config = HBaseConfiguration.create();
+		System.out.println("Adding Resource");
 		config.addResource("hbase-site.xml");
+		System.out.println("Creating Connection");
 		Connection conn = ConnectionFactory.createConnection(config);
+		System.out.println("Getting Admin");
 		Admin admin = conn.getAdmin();
+		System.out.println("Tables Should be Soon");
 		System.out.println("Tables?  " + Arrays.toString(admin.listTableNames()));
 	}
 
