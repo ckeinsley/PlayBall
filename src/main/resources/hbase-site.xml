@@ -1,7 +1,9 @@
 <configuration>
 	<property>
 		<name>hbase.zookeeper.quorum</name>
-		<value>hadoop-m1.c.hadoop-play-ball.internal</value>
+		<value>hadoop-m1.c.hadoop-play-ball.internal,
+			hadoop-w1.c.hadoop-play-ball.internal,
+			hadoop-w2.c.hadoop-play-ball.internal</value>
 	</property>
 	<property>
 		<name>hbase.zookeeper.property.clientPort</name>
