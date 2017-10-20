@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
+import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
@@ -14,6 +17,9 @@ import org.apache.log4j.PatternLayout;
 import org.apache.log4j.RollingFileAppender;
 
 public class Main {
+	private TableName table1 = TableName.valueOf("Table1");
+	private String family1 = "Family1";
+	private String family2 = "Family2";
 
 	public void run() {
 		attemptConnection();
@@ -54,7 +60,11 @@ public class Main {
 		System.out.println("Getting Admin");
 		Admin admin = conn.getAdmin();
 		System.out.println("Tables Should be Soon");
-		System.out.println("Tables?  " + Arrays.toString(admin.listTableNames()));
+		HTableDescriptor desc = new HTableDescriptor(table1);
+		desc.addFamily(new HColumnDescriptor(family1));
+		desc.addFamily(new HColumnDescriptor(family2));
+		admin.createTable(desc);
+		System.out.println("Table Names: " + Arrays.toString(admin.listTableNames()));
 	}
 
 	public void exit() {
