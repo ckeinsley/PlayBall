@@ -55,8 +55,8 @@ public class Main {
 
 	private void connect()
 			throws MasterNotRunningException, ZooKeeperConnectionException, ServiceException, IOException {
-		System.out.println("EPSILON");
-		String path1 = getClass().getClassLoader().getResource("hbase-site.xml").getPath();
+//		System.out.println("EPSILON");
+//		String path1 = getClass().getClassLoader().getResource("hbase-site.xml").getPath();
 		System.out.println("ALPHA");
 		String path = getClass().getResource("hbase-site.xml").getPath();
 		System.out.println("BETA");
