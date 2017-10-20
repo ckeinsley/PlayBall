@@ -1,13 +1,16 @@
 package edu.rosehulman.hadoop;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.MasterNotRunningException;
 import org.apache.hadoop.hbase.ZooKeeperConnectionException;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
+import org.apache.hadoop.hbase.client.Admin;
+import org.apache.hadoop.hbase.client.Connection;
+import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 import org.apache.log4j.RollingFileAppender;
@@ -49,6 +52,8 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("I CAUGHT AN ERROR. FIX THIS LATER");
+		} finally {
+			System.out.println("------------------FINALLY---------------");
 		}
 	}
 
@@ -56,7 +61,10 @@ public class Main {
 			throws MasterNotRunningException, ZooKeeperConnectionException, ServiceException, IOException {
 		Configuration config = HBaseConfiguration.create();
 		config.addResource("hbase-site.xml");
-		HBaseAdmin.checkHBaseAvailable(config);
+		Configuration conf = HBaseConfiguration.create();
+		Connection conn = ConnectionFactory.createConnection(conf);
+		Admin admin = conn.getAdmin();
+		System.out.println("Tables?  " + Arrays.toString(admin.listTableNames()));
 	}
 
 	public void exit() {
