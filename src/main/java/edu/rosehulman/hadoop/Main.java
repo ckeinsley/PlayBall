@@ -55,8 +55,9 @@ public class Main {
 
 	private void connect()
 			throws MasterNotRunningException, ZooKeeperConnectionException, ServiceException, IOException {
-		String path = this.getClass().getClassLoader().getResource("hbase-site.xml").getPath();
 		Configuration config = HBaseConfiguration.create();
+		String path = getClass().getResource("hbase-site.xml").getPath();
+		String path1 = getClass().getClassLoader().getResource("hbase-site.xml").getPath();
 		config.addResource(new Path(path));
 		HBaseAdmin.checkHBaseAvailable(config);
 	}
