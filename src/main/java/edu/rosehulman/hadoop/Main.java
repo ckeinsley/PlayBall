@@ -6,16 +6,12 @@ import java.util.Scanner;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.MasterNotRunningException;
-import org.apache.hadoop.hbase.ZooKeeperConnectionException;
 import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 import org.apache.log4j.RollingFileAppender;
-
-import com.google.protobuf.ServiceException;
 
 public class Main {
 
@@ -37,15 +33,6 @@ public class Main {
 		try {
 			System.out.println("Attempting Connection...");
 			connect();
-		} catch (MasterNotRunningException e) {
-			e.printStackTrace();
-			System.out.println("Master Not Running when connecting");
-		} catch (ZooKeeperConnectionException e) {
-			e.printStackTrace();
-			System.out.println("Zookeeper Connection Error when connecting");
-		} catch (ServiceException e) {
-			e.printStackTrace();
-			System.out.println("Service Exception when connecting");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("IOException when connecting");
@@ -57,12 +44,10 @@ public class Main {
 		}
 	}
 
-	private void connect()
-			throws MasterNotRunningException, ZooKeeperConnectionException, ServiceException, IOException {
+	private void connect() throws IOException {
 		Configuration config = HBaseConfiguration.create();
 		config.addResource("hbase-site.xml");
-		Configuration conf = HBaseConfiguration.create();
-		Connection conn = ConnectionFactory.createConnection(conf);
+		Connection conn = ConnectionFactory.createConnection(config);
 		Admin admin = conn.getAdmin();
 		System.out.println("Tables?  " + Arrays.toString(admin.listTableNames()));
 	}
