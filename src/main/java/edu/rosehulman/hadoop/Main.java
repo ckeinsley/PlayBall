@@ -1,7 +1,6 @@
 package edu.rosehulman.hadoop;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 import org.apache.hadoop.conf.Configuration;
@@ -64,7 +63,9 @@ public class Main {
 		desc.addFamily(new HColumnDescriptor(family1));
 		desc.addFamily(new HColumnDescriptor(family2));
 		admin.createTable(desc);
-		System.out.println("Table Names: " + Arrays.toString(admin.listTableNames()));
+		System.out.println("Table Created? " + desc.getNameAsString());
+		TableName[] tables = admin.listTableNames();
+		System.out.println("Table Names: " + tables);
 	}
 
 	public void exit() {
