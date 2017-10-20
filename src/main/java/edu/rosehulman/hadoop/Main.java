@@ -57,9 +57,6 @@ public class Main {
 			throws MasterNotRunningException, ZooKeeperConnectionException, ServiceException, IOException {
 		Configuration config = HBaseConfiguration.create();
 		config.addResource("hbase-site.xml");
-		System.out.println("config = " + config);
-//		config.set("hbase.zookeepr.quorum", "hadoop-m1.c.hadoop-play.ball.internal");
-//		config.set("hbase.zookeeper.property.clientPort", "35.188.56.13:2181, 104.198.206.210:2181", "104.154.140.30:2181");
 		HBaseAdmin.checkHBaseAvailable(config);
 	}
 
