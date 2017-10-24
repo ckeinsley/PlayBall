@@ -1,7 +1,7 @@
 <configuration>
 	<property>
 		<name>hbase.zookeeper.quorum</name>
-		<value>hadoop-w2.c.hadoop-play-ball.internal,hadoop-w1.c.hadoop-play-ball.internal,hadoop-m1.c.hadoop-play-ball.internal
+		<value>10.128.0.5,10.128.0.4,10.128.0.3
 		</value>
 	</property>
 	<property>
@@ -14,8 +14,12 @@
 	</property>
 	<property>
 		<name>hbase.rootdir</name>
-		<value>hdfs://hadoop-m1.c.hadoop-play-ball.internal:8020/apps/hbase/data
+		<value>hdfs://10.128.0.3:8020/apps/hbase/data
 		</value>
+	</property>
+		<property>
+		<name>hbase.zookeeper.property.dataDir</name>
+		<value>/usr/local/zookeeper</value>
 	</property>
 </configuration>
 
