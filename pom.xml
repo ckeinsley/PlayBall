@@ -35,7 +35,7 @@
 				<updatePolicy>never</updatePolicy>
 				<checksumPolicy>fail</checksumPolicy>
 			</snapshots>
-			<id>grr</id>
+			<id>HDP</id>
 			<name>HDP Releases</name>
 			<url>http://repo.hortonworks.com/content/groups/public</url>
 			<layout>default</layout>
