@@ -1,0 +1,661 @@
+DEBUG 2017-10-24 20:29:45,283 Failed to detect a valid hadoop home directory
+java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:52)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:43)
+	at edu.rosehulman.hadoop.Main.run(Main.java:22)
+	at edu.rosehulman.hadoop.Main.main(Main.java:90)
+WARN  2017-10-24 20:29:45,289 Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+DEBUG 2017-10-24 20:29:45,289 Failed to find winutils.exe
+java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.fileNotFoundException(Shell.java:528)
+	at org.apache.hadoop.util.Shell.getHadoopHomeDir(Shell.java:549)
+	at org.apache.hadoop.util.Shell.getQualifiedBin(Shell.java:572)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:669)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:52)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:43)
+	at edu.rosehulman.hadoop.Main.run(Main.java:22)
+	at edu.rosehulman.hadoop.Main.main(Main.java:90)
+Caused by: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	... 9 more
+DEBUG 2017-10-24 20:29:45,370 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginSuccess with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Rate of successful kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:29:45,377 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginFailure with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Rate of failed kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:29:45,378 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.getGroups with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[GetGroups], valueName=Time)
+DEBUG 2017-10-24 20:29:45,378 field private org.apache.hadoop.metrics2.lib.MutableGaugeLong org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailuresTotal with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Renewal failures since startup], valueName=Time)
+DEBUG 2017-10-24 20:29:45,378 field private org.apache.hadoop.metrics2.lib.MutableGaugeInt org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailures with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Renewal failures since last successful login], valueName=Time)
+DEBUG 2017-10-24 20:29:45,379 UgiMetrics, User and group related metrics
+DEBUG 2017-10-24 20:29:45,454 Kerberos krb5 configuration not found, setting default realm to empty
+DEBUG 2017-10-24 20:29:45,456  Creating new Groups object
+DEBUG 2017-10-24 20:29:45,458 Trying to load the custom-built native-hadoop library...
+DEBUG 2017-10-24 20:29:45,459 Failed to load native-hadoop with error: java.lang.UnsatisfiedLinkError: no hadoop in java.library.path
+DEBUG 2017-10-24 20:29:45,459 java.library.path=C:\Program Files\Java\jdk1.8.0_152\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\;C:\Users\ChristopherK\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\MinGw\bin;C:\MinGw\bin\g++.exe;;C:\WINDOWS\System32;;.
+WARN  2017-10-24 20:29:45,459 Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+DEBUG 2017-10-24 20:29:45,459 Falling back to shell based
+DEBUG 2017-10-24 20:29:45,459 Group mapping impl=org.apache.hadoop.security.ShellBasedUnixGroupsMapping
+DEBUG 2017-10-24 20:29:45,478 Group mapping impl=org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback; cacheTimeout=300000; warningDeltaMs=5000
+DEBUG 2017-10-24 20:29:45,481 hadoop login
+DEBUG 2017-10-24 20:29:45,482 hadoop login commit
+DEBUG 2017-10-24 20:29:45,485 using local user:NTUserPrincipal: ChristopherK
+DEBUG 2017-10-24 20:29:45,485 Using user: "NTUserPrincipal: ChristopherK" with name ChristopherK
+DEBUG 2017-10-24 20:29:45,486 User entry: "ChristopherK"
+DEBUG 2017-10-24 20:29:45,486 Assuming keytab is managed externally since logged in from subject.
+DEBUG 2017-10-24 20:29:45,486 UGI loginUser:ChristopherK (auth:SIMPLE)
+INFO  2017-10-24 20:29:45,626 Process identifier=hconnection-0x1b26f7b2 connecting to ZooKeeper ensemble=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181
+INFO  2017-10-24 20:29:50,133 Client environment:zookeeper.version=3.4.6-205--1, built on 08/26/2017 09:30 GMT
+INFO  2017-10-24 20:29:50,133 Client environment:host.name=DESKTOP-I1R0NVQ
+INFO  2017-10-24 20:29:50,133 Client environment:java.version=1.8.0_152
+INFO  2017-10-24 20:29:50,133 Client environment:java.vendor=Oracle Corporation
+INFO  2017-10-24 20:29:50,133 Client environment:java.home=C:\Program Files\Java\jdk1.8.0_152\jre
+INFO  2017-10-24 20:29:50,133 Client environment:java.class.path=C:\Program Files\Java\jdk1.8.0_152\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\zipfs.jar;E:\EclipseWorkspaces\434\hadoop-playball;E:\EclipseWorkspaces\434\hadoop-playball\target\classes;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-client\2.8.1\hadoop-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-common\2.8.1\hadoop-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\commons-cli\commons-cli\1.2\commons-cli-1.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\commons\commons-math3\3.1.1\commons-math3-3.1.1.jar;C:\Users\ChristopherK\.m2\repository\xmlenc\xmlenc\0.52\xmlenc-0.52.jar;C:\Users\ChristopherK\.m2\repository\org\apache\httpcomponents\httpclient\4.5.2\httpclient-4.5.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\httpcomponents\httpcore\4.4.4\httpcore-4.4.4.jar;C:\Users\ChristopherK\.m2\repository\commons-net\commons-net\3.1\commons-net-3.1.jar;C:\Users\ChristopherK\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\ChristopherK\.m2\repository\org\mortbay\jetty\jetty-sslengine\6.1.26\jetty-sslengine-6.1.26.jar;C:\Users\ChristopherK\.m2\repository\javax\servlet\jsp\jsp-api\2.1\jsp-api-2.1.jar;C:\Users\ChristopherK\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\ChristopherK\.m2\repository\commons-configuration\commons-configuration\1.6\commons-configuration-1.6.jar;C:\Users\ChristopherK\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar;C:\Users\ChristopherK\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar;C:\Users\ChristopherK\.m2\repository\commons-beanutils\commons-beanutils-core\1.8.0\commons-beanutils-core-1.8.0.jar;C:\Users\ChristopherK\.m2\repository\org\slf4j\slf4j-api\1.7.10\slf4j-api-1.7.10.jar;C:\Users\ChristopherK\.m2\repository\org\slf4j\slf4j-log4j12\1.7.10\slf4j-log4j12-1.7.10.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\apache\avro\avro\1.7.4\avro-1.7.4.jar;C:\Users\ChristopherK\.m2\repository\com\thoughtworks\paranamer\paranamer\2.3\paranamer-2.3.jar;C:\Users\ChristopherK\.m2\repository\org\xerial\snappy\snappy-java\1.0.4.1\snappy-java-1.0.4.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-client\2.7.1\curator-client-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-recipes\2.7.1\curator-recipes-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\code\findbugs\jsr305\3.0.0\jsr305-3.0.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\htrace\htrace-core4\4.0.1-incubating\htrace-core4-4.0.1-incubating.jar;C:\Users\ChristopherK\.m2\repository\org\apache\commons\commons-compress\1.4.1\commons-compress-1.4.1.jar;C:\Users\ChristopherK\.m2\repository\org\tukaani\xz\1.0\xz-1.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-hdfs\2.8.1\hadoop-hdfs-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-hdfs-client\2.8.1\hadoop-hdfs-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\com\squareup\okhttp\okhttp\2.4.0\okhttp-2.4.0.jar;C:\Users\ChristopherK\.m2\repository\com\squareup\okio\okio\1.4.0\okio-1.4.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-app\2.8.1\hadoop-mapreduce-client-app-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-common\2.8.1\hadoop-mapreduce-client-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-client\2.8.1\hadoop-yarn-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-server-common\2.8.1\hadoop-yarn-server-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-shuffle\2.8.1\hadoop-mapreduce-client-shuffle-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\fusesource\leveldbjni\leveldbjni-all\1.8\leveldbjni-all-1.8.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-api\2.8.1\hadoop-yarn-api-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-core\2.8.1\hadoop-mapreduce-client-core-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-common\2.8.1\hadoop-yarn-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\javax\xml\bind\jaxb-api\2.2.2\jaxb-api-2.2.2.jar;C:\Users\ChristopherK\.m2\repository\javax\xml\stream\stax-api\1.0-2\stax-api-1.0-2.jar;C:\Users\ChristopherK\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\ChristopherK\.m2\repository\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar;C:\Users\ChristopherK\.m2\repository\com\sun\jersey\jersey-core\1.9\jersey-core-1.9.jar;C:\Users\ChristopherK\.m2\repository\com\sun\jersey\jersey-client\1.9\jersey-client-1.9.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-jaxrs\1.9.13\jackson-jaxrs-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-xc\1.9.13\jackson-xc-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-jobclient\2.8.1\hadoop-mapreduce-client-jobclient-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-annotations\2.8.1\hadoop-annotations-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-client\1.1.2.2.6.2.0-205\hbase-client-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-annotations\1.1.2.2.6.2.0-205\hbase-annotations-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-common\1.1.2.2.6.2.0-205\hbase-common-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\mortbay\jetty\jetty-util\6.1.26.hwx\jetty-util-6.1.26.hwx.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-protocol\1.1.2.2.6.2.0-205\hbase-protocol-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\commons-codec\commons-codec\1.9\commons-codec-1.9.jar;C:\Users\ChristopherK\.m2\repository\commons-io\commons-io\2.4\commons-io-2.4.jar;C:\Users\ChristopherK\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\ChristopherK\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\ChristopherK\.m2\repository\com\google\guava\guava\12.0.1\guava-12.0.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\protobuf\protobuf-java\2.5.0\protobuf-java-2.5.0.jar;C:\Users\ChristopherK\.m2\repository\io\netty\netty-all\4.0.23.Final\netty-all-4.0.23.Final.jar;C:\Users\ChristopherK\.m2\repository\org\apache\zookeeper\zookeeper\3.4.6.2.6.2.0-205\zookeeper-3.4.6.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\htrace\htrace-core\3.1.0-incubating\htrace-core-3.1.0-incubating.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\jruby\jcodings\jcodings\1.0.8\jcodings-1.0.8.jar;C:\Users\ChristopherK\.m2\repository\org\jruby\joni\joni\2.1.2\joni-2.1.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-auth\2.7.3.2.6.2.0-205\hadoop-auth-2.7.3.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\com\nimbusds\nimbus-jose-jwt\3.9\nimbus-jose-jwt-3.9.jar;C:\Users\ChristopherK\.m2\repository\net\jcip\jcip-annotations\1.0\jcip-annotations-1.0.jar;C:\Users\ChristopherK\.m2\repository\net\minidev\json-smart\1.1.1\json-smart-1.1.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\server\apacheds-kerberos-codec\2.0.0-M15\apacheds-kerberos-codec-2.0.0-M15.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\server\apacheds-i18n\2.0.0-M15\apacheds-i18n-2.0.0-M15.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\api\api-asn1-api\1.0.0-M20\api-asn1-api-1.0.0-M20.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\api\api-util\1.0.0-M20\api-util-1.0.0-M20.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-framework\2.7.1\curator-framework-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\com\github\stephenc\findbugs\findbugs-annotations\1.3.9-1\findbugs-annotations-1.3.9-1.jar;C:\Users\ChristopherK\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\ChristopherK\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Program Files\Java\jdk1.8.0_152\lib\tools.jar
+INFO  2017-10-24 20:29:50,133 Client environment:java.library.path=C:\Program Files\Java\jdk1.8.0_152\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\;C:\Users\ChristopherK\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\MinGw\bin;C:\MinGw\bin\g++.exe;;C:\WINDOWS\System32;;.
+INFO  2017-10-24 20:29:50,133 Client environment:java.io.tmpdir=C:\Users\CHRIST~1\AppData\Local\Temp\
+INFO  2017-10-24 20:29:50,133 Client environment:java.compiler=<NA>
+INFO  2017-10-24 20:29:50,133 Client environment:os.name=Windows 10
+INFO  2017-10-24 20:29:50,133 Client environment:os.arch=amd64
+INFO  2017-10-24 20:29:50,133 Client environment:os.version=10.0
+INFO  2017-10-24 20:29:50,133 Client environment:user.name=ChristopherK
+INFO  2017-10-24 20:29:50,133 Client environment:user.home=C:\Users\ChristopherK
+INFO  2017-10-24 20:29:50,134 Client environment:user.dir=E:\EclipseWorkspaces\434\hadoop-playball
+INFO  2017-10-24 20:29:50,134 Initiating client connection, connectString=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181 sessionTimeout=90000 watcher=org.apache.hadoop.hbase.zookeeper.PendingWatcher@5c072e3f
+WARN  2017-10-24 20:29:50,136 No IP address found for server: 10.128.0.3
+		:2181
+java.net.UnknownHostException: 10.128.0.3
+		
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.zookeeper.client.StaticHostProvider.resolveAndShuffle(StaticHostProvider.java:98)
+	at org.apache.zookeeper.client.StaticHostProvider.<init>(StaticHostProvider.java:61)
+	at org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:445)
+	at org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:380)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.checkZk(RecoverableZooKeeper.java:141)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.<init>(RecoverableZooKeeper.java:128)
+	at org.apache.hadoop.hbase.zookeeper.ZKUtil.connect(ZKUtil.java:138)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:176)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:150)
+	at org.apache.hadoop.hbase.client.ZooKeeperKeepAliveConnection.<init>(ZooKeeperKeepAliveConnection.java:43)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.getKeepAliveZooKeeperWatcher(ConnectionManager.java:1681)
+	at org.apache.hadoop.hbase.client.ZooKeeperRegistry.getClusterId(ZooKeeperRegistry.java:104)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.retrieveClusterId(ConnectionManager.java:901)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.<init>(ConnectionManager.java:646)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:238)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:218)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:119)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:57)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:43)
+	at edu.rosehulman.hadoop.Main.run(Main.java:22)
+	at edu.rosehulman.hadoop.Main.main(Main.java:90)
+DEBUG 2017-10-24 20:29:50,138 zookeeper.disableAutoWatchReset is false
+INFO  2017-10-24 20:29:50,248 Opening socket connection to server 10.128.0.4/10.128.0.4:2181. Will not attempt to authenticate using SASL (unknown error)
+WARN  2017-10-24 20:30:11,249 Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection timed out: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1125)
+DEBUG 2017-10-24 20:30:11,249 Ignoring exception during shutdown input
+java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.shutdownInput(SocketChannelImpl.java:780)
+	at sun.nio.ch.SocketAdaptor.shutdownInput(SocketAdaptor.java:399)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.cleanup(ClientCnxnSocketNIO.java:200)
+	at org.apache.zookeeper.ClientCnxn$SendThread.cleanup(ClientCnxn.java:1229)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1154)
+DEBUG 2017-10-24 20:30:11,249 Ignoring exception during shutdown output
+java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.shutdownOutput(SocketChannelImpl.java:797)
+	at sun.nio.ch.SocketAdaptor.shutdownOutput(SocketAdaptor.java:407)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.cleanup(ClientCnxnSocketNIO.java:207)
+	at org.apache.zookeeper.ClientCnxn$SendThread.cleanup(ClientCnxn.java:1229)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1154)
+INFO  2017-10-24 20:30:11,351 Opening socket connection to server 10.128.0.5/10.128.0.5:2181. Will not attempt to authenticate using SASL (unknown error)
+WARN  2017-10-24 20:30:11,354 Possibly transient ZooKeeper, quorum=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181, exception=org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase-unsecure/hbaseid
+DEBUG 2017-10-24 20:34:32,618 Failed to detect a valid hadoop home directory
+java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:52)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:43)
+	at edu.rosehulman.hadoop.Main.run(Main.java:23)
+	at edu.rosehulman.hadoop.Main.main(Main.java:94)
+WARN  2017-10-24 20:34:32,625 Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+DEBUG 2017-10-24 20:34:32,625 Failed to find winutils.exe
+java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.fileNotFoundException(Shell.java:528)
+	at org.apache.hadoop.util.Shell.getHadoopHomeDir(Shell.java:549)
+	at org.apache.hadoop.util.Shell.getQualifiedBin(Shell.java:572)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:669)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:52)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:43)
+	at edu.rosehulman.hadoop.Main.run(Main.java:23)
+	at edu.rosehulman.hadoop.Main.main(Main.java:94)
+Caused by: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	... 9 more
+DEBUG 2017-10-24 20:34:32,712 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginSuccess with annotation @org.apache.hadoop.metrics2.annotation.Metric(about=, sampleName=Ops, always=false, type=DEFAULT, value=[Rate of successful kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:34:32,719 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginFailure with annotation @org.apache.hadoop.metrics2.annotation.Metric(about=, sampleName=Ops, always=false, type=DEFAULT, value=[Rate of failed kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:34:32,719 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.getGroups with annotation @org.apache.hadoop.metrics2.annotation.Metric(about=, sampleName=Ops, always=false, type=DEFAULT, value=[GetGroups], valueName=Time)
+DEBUG 2017-10-24 20:34:32,720 field private org.apache.hadoop.metrics2.lib.MutableGaugeLong org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailuresTotal with annotation @org.apache.hadoop.metrics2.annotation.Metric(about=, sampleName=Ops, always=false, type=DEFAULT, value=[Renewal failures since startup], valueName=Time)
+DEBUG 2017-10-24 20:34:32,720 field private org.apache.hadoop.metrics2.lib.MutableGaugeInt org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailures with annotation @org.apache.hadoop.metrics2.annotation.Metric(about=, sampleName=Ops, always=false, type=DEFAULT, value=[Renewal failures since last successful login], valueName=Time)
+DEBUG 2017-10-24 20:34:32,721 UgiMetrics, User and group related metrics
+DEBUG 2017-10-24 20:34:32,793 Kerberos krb5 configuration not found, setting default realm to empty
+DEBUG 2017-10-24 20:34:32,795  Creating new Groups object
+DEBUG 2017-10-24 20:34:32,797 Trying to load the custom-built native-hadoop library...
+DEBUG 2017-10-24 20:34:32,798 Failed to load native-hadoop with error: java.lang.UnsatisfiedLinkError: no hadoop in java.library.path
+DEBUG 2017-10-24 20:34:32,798 java.library.path=C:\Program Files\Java\jdk1.8.0_152\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\;C:\Users\ChristopherK\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\MinGw\bin;C:\MinGw\bin\g++.exe;;C:\WINDOWS\System32;;.
+WARN  2017-10-24 20:34:32,798 Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+DEBUG 2017-10-24 20:34:32,798 Falling back to shell based
+DEBUG 2017-10-24 20:34:32,798 Group mapping impl=org.apache.hadoop.security.ShellBasedUnixGroupsMapping
+DEBUG 2017-10-24 20:34:32,818 Group mapping impl=org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback; cacheTimeout=300000; warningDeltaMs=5000
+DEBUG 2017-10-24 20:34:32,821 hadoop login
+DEBUG 2017-10-24 20:34:32,822 hadoop login commit
+DEBUG 2017-10-24 20:34:32,825 using local user:NTUserPrincipal: ChristopherK
+DEBUG 2017-10-24 20:34:32,825 Using user: "NTUserPrincipal: ChristopherK" with name ChristopherK
+DEBUG 2017-10-24 20:34:32,825 User entry: "ChristopherK"
+DEBUG 2017-10-24 20:34:32,825 Assuming keytab is managed externally since logged in from subject.
+DEBUG 2017-10-24 20:34:32,826 UGI loginUser:ChristopherK (auth:SIMPLE)
+INFO  2017-10-24 20:34:32,969 Process identifier=hconnection-0x1b26f7b2 connecting to ZooKeeper ensemble=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181
+INFO  2017-10-24 20:34:37,476 Client environment:zookeeper.version=3.4.6-205--1, built on 08/26/2017 09:30 GMT
+INFO  2017-10-24 20:34:37,476 Client environment:host.name=DESKTOP-I1R0NVQ
+INFO  2017-10-24 20:34:37,476 Client environment:java.version=1.8.0_152
+INFO  2017-10-24 20:34:37,476 Client environment:java.vendor=Oracle Corporation
+INFO  2017-10-24 20:34:37,476 Client environment:java.home=C:\Program Files\Java\jdk1.8.0_152\jre
+INFO  2017-10-24 20:34:37,476 Client environment:java.class.path=C:\Program Files\Java\jdk1.8.0_152\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\zipfs.jar;E:\EclipseWorkspaces\434\hadoop-playball;E:\EclipseWorkspaces\434\hadoop-playball\target\classes;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-client\2.8.1\hadoop-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-common\2.8.1\hadoop-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\commons-cli\commons-cli\1.2\commons-cli-1.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\commons\commons-math3\3.1.1\commons-math3-3.1.1.jar;C:\Users\ChristopherK\.m2\repository\xmlenc\xmlenc\0.52\xmlenc-0.52.jar;C:\Users\ChristopherK\.m2\repository\org\apache\httpcomponents\httpclient\4.5.2\httpclient-4.5.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\httpcomponents\httpcore\4.4.4\httpcore-4.4.4.jar;C:\Users\ChristopherK\.m2\repository\commons-net\commons-net\3.1\commons-net-3.1.jar;C:\Users\ChristopherK\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\ChristopherK\.m2\repository\org\mortbay\jetty\jetty-sslengine\6.1.26\jetty-sslengine-6.1.26.jar;C:\Users\ChristopherK\.m2\repository\javax\servlet\jsp\jsp-api\2.1\jsp-api-2.1.jar;C:\Users\ChristopherK\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\ChristopherK\.m2\repository\commons-configuration\commons-configuration\1.6\commons-configuration-1.6.jar;C:\Users\ChristopherK\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar;C:\Users\ChristopherK\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar;C:\Users\ChristopherK\.m2\repository\commons-beanutils\commons-beanutils-core\1.8.0\commons-beanutils-core-1.8.0.jar;C:\Users\ChristopherK\.m2\repository\org\slf4j\slf4j-api\1.7.10\slf4j-api-1.7.10.jar;C:\Users\ChristopherK\.m2\repository\org\slf4j\slf4j-log4j12\1.7.10\slf4j-log4j12-1.7.10.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\apache\avro\avro\1.7.4\avro-1.7.4.jar;C:\Users\ChristopherK\.m2\repository\com\thoughtworks\paranamer\paranamer\2.3\paranamer-2.3.jar;C:\Users\ChristopherK\.m2\repository\org\xerial\snappy\snappy-java\1.0.4.1\snappy-java-1.0.4.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-client\2.7.1\curator-client-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-recipes\2.7.1\curator-recipes-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\code\findbugs\jsr305\3.0.0\jsr305-3.0.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\htrace\htrace-core4\4.0.1-incubating\htrace-core4-4.0.1-incubating.jar;C:\Users\ChristopherK\.m2\repository\org\apache\commons\commons-compress\1.4.1\commons-compress-1.4.1.jar;C:\Users\ChristopherK\.m2\repository\org\tukaani\xz\1.0\xz-1.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-hdfs\2.8.1\hadoop-hdfs-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-hdfs-client\2.8.1\hadoop-hdfs-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\com\squareup\okhttp\okhttp\2.4.0\okhttp-2.4.0.jar;C:\Users\ChristopherK\.m2\repository\com\squareup\okio\okio\1.4.0\okio-1.4.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-app\2.8.1\hadoop-mapreduce-client-app-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-common\2.8.1\hadoop-mapreduce-client-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-client\2.8.1\hadoop-yarn-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-server-common\2.8.1\hadoop-yarn-server-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-shuffle\2.8.1\hadoop-mapreduce-client-shuffle-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\fusesource\leveldbjni\leveldbjni-all\1.8\leveldbjni-all-1.8.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-api\2.8.1\hadoop-yarn-api-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-core\2.8.1\hadoop-mapreduce-client-core-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-common\2.8.1\hadoop-yarn-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\javax\xml\bind\jaxb-api\2.2.2\jaxb-api-2.2.2.jar;C:\Users\ChristopherK\.m2\repository\javax\xml\stream\stax-api\1.0-2\stax-api-1.0-2.jar;C:\Users\ChristopherK\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\ChristopherK\.m2\repository\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar;C:\Users\ChristopherK\.m2\repository\com\sun\jersey\jersey-core\1.9\jersey-core-1.9.jar;C:\Users\ChristopherK\.m2\repository\com\sun\jersey\jersey-client\1.9\jersey-client-1.9.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-jaxrs\1.9.13\jackson-jaxrs-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-xc\1.9.13\jackson-xc-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-jobclient\2.8.1\hadoop-mapreduce-client-jobclient-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-annotations\2.8.1\hadoop-annotations-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-client\1.1.2.2.6.2.0-205\hbase-client-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-annotations\1.1.2.2.6.2.0-205\hbase-annotations-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-common\1.1.2.2.6.2.0-205\hbase-common-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\mortbay\jetty\jetty-util\6.1.26.hwx\jetty-util-6.1.26.hwx.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-protocol\1.1.2.2.6.2.0-205\hbase-protocol-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\commons-codec\commons-codec\1.9\commons-codec-1.9.jar;C:\Users\ChristopherK\.m2\repository\commons-io\commons-io\2.4\commons-io-2.4.jar;C:\Users\ChristopherK\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\ChristopherK\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\ChristopherK\.m2\repository\com\google\guava\guava\12.0.1\guava-12.0.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\protobuf\protobuf-java\2.5.0\protobuf-java-2.5.0.jar;C:\Users\ChristopherK\.m2\repository\io\netty\netty-all\4.0.23.Final\netty-all-4.0.23.Final.jar;C:\Users\ChristopherK\.m2\repository\org\apache\zookeeper\zookeeper\3.4.6.2.6.2.0-205\zookeeper-3.4.6.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\htrace\htrace-core\3.1.0-incubating\htrace-core-3.1.0-incubating.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\jruby\jcodings\jcodings\1.0.8\jcodings-1.0.8.jar;C:\Users\ChristopherK\.m2\repository\org\jruby\joni\joni\2.1.2\joni-2.1.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-auth\2.7.3.2.6.2.0-205\hadoop-auth-2.7.3.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\com\nimbusds\nimbus-jose-jwt\3.9\nimbus-jose-jwt-3.9.jar;C:\Users\ChristopherK\.m2\repository\net\jcip\jcip-annotations\1.0\jcip-annotations-1.0.jar;C:\Users\ChristopherK\.m2\repository\net\minidev\json-smart\1.1.1\json-smart-1.1.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\server\apacheds-kerberos-codec\2.0.0-M15\apacheds-kerberos-codec-2.0.0-M15.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\server\apacheds-i18n\2.0.0-M15\apacheds-i18n-2.0.0-M15.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\api\api-asn1-api\1.0.0-M20\api-asn1-api-1.0.0-M20.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\api\api-util\1.0.0-M20\api-util-1.0.0-M20.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-framework\2.7.1\curator-framework-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\com\github\stephenc\findbugs\findbugs-annotations\1.3.9-1\findbugs-annotations-1.3.9-1.jar;C:\Users\ChristopherK\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\ChristopherK\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Program Files\Java\jdk1.8.0_152\lib\tools.jar
+INFO  2017-10-24 20:34:37,476 Client environment:java.library.path=C:\Program Files\Java\jdk1.8.0_152\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\;C:\Users\ChristopherK\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\MinGw\bin;C:\MinGw\bin\g++.exe;;C:\WINDOWS\System32;;.
+INFO  2017-10-24 20:34:37,476 Client environment:java.io.tmpdir=C:\Users\CHRIST~1\AppData\Local\Temp\
+INFO  2017-10-24 20:34:37,476 Client environment:java.compiler=<NA>
+INFO  2017-10-24 20:34:37,476 Client environment:os.name=Windows 10
+INFO  2017-10-24 20:34:37,476 Client environment:os.arch=amd64
+INFO  2017-10-24 20:34:37,476 Client environment:os.version=10.0
+INFO  2017-10-24 20:34:37,476 Client environment:user.name=ChristopherK
+INFO  2017-10-24 20:34:37,476 Client environment:user.home=C:\Users\ChristopherK
+INFO  2017-10-24 20:34:37,477 Client environment:user.dir=E:\EclipseWorkspaces\434\hadoop-playball
+INFO  2017-10-24 20:34:37,477 Initiating client connection, connectString=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181 sessionTimeout=90000 watcher=org.apache.hadoop.hbase.zookeeper.PendingWatcher@5c072e3f
+WARN  2017-10-24 20:34:37,479 No IP address found for server: 10.128.0.3
+		:2181
+java.net.UnknownHostException: 10.128.0.3
+		
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.zookeeper.client.StaticHostProvider.resolveAndShuffle(StaticHostProvider.java:98)
+	at org.apache.zookeeper.client.StaticHostProvider.<init>(StaticHostProvider.java:61)
+	at org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:445)
+	at org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:380)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.checkZk(RecoverableZooKeeper.java:141)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.<init>(RecoverableZooKeeper.java:128)
+	at org.apache.hadoop.hbase.zookeeper.ZKUtil.connect(ZKUtil.java:138)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:176)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:150)
+	at org.apache.hadoop.hbase.client.ZooKeeperKeepAliveConnection.<init>(ZooKeeperKeepAliveConnection.java:43)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.getKeepAliveZooKeeperWatcher(ConnectionManager.java:1681)
+	at org.apache.hadoop.hbase.client.ZooKeeperRegistry.getClusterId(ZooKeeperRegistry.java:104)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.retrieveClusterId(ConnectionManager.java:901)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.<init>(ConnectionManager.java:646)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:238)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:218)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:119)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:57)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:43)
+	at edu.rosehulman.hadoop.Main.run(Main.java:23)
+	at edu.rosehulman.hadoop.Main.main(Main.java:94)
+DEBUG 2017-10-24 20:34:37,480 zookeeper.disableAutoWatchReset is false
+INFO  2017-10-24 20:34:37,591 Opening socket connection to server 10.128.0.5/10.128.0.5:2181. Will not attempt to authenticate using SASL (unknown error)
+DEBUG 2017-10-24 20:34:45,850 Failed to detect a valid hadoop home directory
+java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:52)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:43)
+	at edu.rosehulman.hadoop.Main.run(Main.java:23)
+	at edu.rosehulman.hadoop.Main.main(Main.java:94)
+WARN  2017-10-24 20:34:45,856 Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+DEBUG 2017-10-24 20:34:45,856 Failed to find winutils.exe
+java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.fileNotFoundException(Shell.java:528)
+	at org.apache.hadoop.util.Shell.getHadoopHomeDir(Shell.java:549)
+	at org.apache.hadoop.util.Shell.getQualifiedBin(Shell.java:572)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:669)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:52)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:43)
+	at edu.rosehulman.hadoop.Main.run(Main.java:23)
+	at edu.rosehulman.hadoop.Main.main(Main.java:94)
+Caused by: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	... 9 more
+DEBUG 2017-10-24 20:34:45,939 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginSuccess with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Rate of successful kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:34:45,946 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginFailure with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Rate of failed kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:34:45,947 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.getGroups with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[GetGroups], valueName=Time)
+DEBUG 2017-10-24 20:34:45,947 field private org.apache.hadoop.metrics2.lib.MutableGaugeLong org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailuresTotal with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Renewal failures since startup], valueName=Time)
+DEBUG 2017-10-24 20:34:45,947 field private org.apache.hadoop.metrics2.lib.MutableGaugeInt org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailures with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Renewal failures since last successful login], valueName=Time)
+DEBUG 2017-10-24 20:34:45,948 UgiMetrics, User and group related metrics
+DEBUG 2017-10-24 20:34:46,022 Kerberos krb5 configuration not found, setting default realm to empty
+DEBUG 2017-10-24 20:34:46,024  Creating new Groups object
+DEBUG 2017-10-24 20:34:46,026 Trying to load the custom-built native-hadoop library...
+DEBUG 2017-10-24 20:34:46,027 Failed to load native-hadoop with error: java.lang.UnsatisfiedLinkError: no hadoop in java.library.path
+DEBUG 2017-10-24 20:34:46,027 java.library.path=C:\Program Files\Java\jdk1.8.0_152\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\;C:\Users\ChristopherK\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\MinGw\bin;C:\MinGw\bin\g++.exe;;C:\WINDOWS\System32;;.
+WARN  2017-10-24 20:34:46,027 Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+DEBUG 2017-10-24 20:34:46,027 Falling back to shell based
+DEBUG 2017-10-24 20:34:46,028 Group mapping impl=org.apache.hadoop.security.ShellBasedUnixGroupsMapping
+DEBUG 2017-10-24 20:34:46,047 Group mapping impl=org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback; cacheTimeout=300000; warningDeltaMs=5000
+DEBUG 2017-10-24 20:34:46,050 hadoop login
+DEBUG 2017-10-24 20:34:46,051 hadoop login commit
+DEBUG 2017-10-24 20:34:46,054 using local user:NTUserPrincipal: ChristopherK
+DEBUG 2017-10-24 20:34:46,054 Using user: "NTUserPrincipal: ChristopherK" with name ChristopherK
+DEBUG 2017-10-24 20:34:46,054 User entry: "ChristopherK"
+DEBUG 2017-10-24 20:34:46,055 Assuming keytab is managed externally since logged in from subject.
+DEBUG 2017-10-24 20:34:46,055 UGI loginUser:ChristopherK (auth:SIMPLE)
+INFO  2017-10-24 20:34:46,196 Process identifier=hconnection-0x1b26f7b2 connecting to ZooKeeper ensemble=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181
+DEBUG 2017-10-24 20:34:55,304 Failed to detect a valid hadoop home directory
+java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:52)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:43)
+	at edu.rosehulman.hadoop.Main.run(Main.java:23)
+	at edu.rosehulman.hadoop.Main.main(Main.java:94)
+WARN  2017-10-24 20:34:55,311 Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+DEBUG 2017-10-24 20:34:55,311 Failed to find winutils.exe
+java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.fileNotFoundException(Shell.java:528)
+	at org.apache.hadoop.util.Shell.getHadoopHomeDir(Shell.java:549)
+	at org.apache.hadoop.util.Shell.getQualifiedBin(Shell.java:572)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:669)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:52)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:43)
+	at edu.rosehulman.hadoop.Main.run(Main.java:23)
+	at edu.rosehulman.hadoop.Main.main(Main.java:94)
+Caused by: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	... 9 more
+DEBUG 2017-10-24 20:34:55,398 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginSuccess with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Rate of successful kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:34:55,406 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginFailure with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Rate of failed kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:34:55,406 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.getGroups with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[GetGroups], valueName=Time)
+DEBUG 2017-10-24 20:34:55,406 field private org.apache.hadoop.metrics2.lib.MutableGaugeLong org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailuresTotal with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Renewal failures since startup], valueName=Time)
+DEBUG 2017-10-24 20:34:55,407 field private org.apache.hadoop.metrics2.lib.MutableGaugeInt org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailures with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Renewal failures since last successful login], valueName=Time)
+DEBUG 2017-10-24 20:34:55,407 UgiMetrics, User and group related metrics
+DEBUG 2017-10-24 20:34:55,483 Kerberos krb5 configuration not found, setting default realm to empty
+DEBUG 2017-10-24 20:34:55,486  Creating new Groups object
+DEBUG 2017-10-24 20:34:55,487 Trying to load the custom-built native-hadoop library...
+DEBUG 2017-10-24 20:34:55,488 Failed to load native-hadoop with error: java.lang.UnsatisfiedLinkError: no hadoop in java.library.path
+DEBUG 2017-10-24 20:34:55,488 java.library.path=C:\Program Files\Java\jdk1.8.0_152\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\;C:\Users\ChristopherK\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\MinGw\bin;C:\MinGw\bin\g++.exe;;C:\WINDOWS\System32;;.
+WARN  2017-10-24 20:34:55,488 Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+DEBUG 2017-10-24 20:34:55,489 Falling back to shell based
+DEBUG 2017-10-24 20:34:55,489 Group mapping impl=org.apache.hadoop.security.ShellBasedUnixGroupsMapping
+DEBUG 2017-10-24 20:34:55,508 Group mapping impl=org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback; cacheTimeout=300000; warningDeltaMs=5000
+DEBUG 2017-10-24 20:34:55,512 hadoop login
+DEBUG 2017-10-24 20:34:55,512 hadoop login commit
+DEBUG 2017-10-24 20:34:55,516 using local user:NTUserPrincipal: ChristopherK
+DEBUG 2017-10-24 20:34:55,516 Using user: "NTUserPrincipal: ChristopherK" with name ChristopherK
+DEBUG 2017-10-24 20:34:55,516 User entry: "ChristopherK"
+DEBUG 2017-10-24 20:34:55,516 Assuming keytab is managed externally since logged in from subject.
+DEBUG 2017-10-24 20:34:55,516 UGI loginUser:ChristopherK (auth:SIMPLE)
+INFO  2017-10-24 20:34:55,666 Process identifier=hconnection-0x1b26f7b2 connecting to ZooKeeper ensemble=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181
+DEBUG 2017-10-24 20:37:21,192 Failed to detect a valid hadoop home directory
+java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:56)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:47)
+	at edu.rosehulman.hadoop.Main.run(Main.java:27)
+	at edu.rosehulman.hadoop.Main.main(Main.java:101)
+WARN  2017-10-24 20:37:21,198 Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+DEBUG 2017-10-24 20:37:21,199 Failed to find winutils.exe
+java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.fileNotFoundException(Shell.java:528)
+	at org.apache.hadoop.util.Shell.getHadoopHomeDir(Shell.java:549)
+	at org.apache.hadoop.util.Shell.getQualifiedBin(Shell.java:572)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:669)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:56)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:47)
+	at edu.rosehulman.hadoop.Main.run(Main.java:27)
+	at edu.rosehulman.hadoop.Main.main(Main.java:101)
+Caused by: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	... 9 more
+DEBUG 2017-10-24 20:37:21,285 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginSuccess with annotation @org.apache.hadoop.metrics2.annotation.Metric(sampleName=Ops, always=false, about=, type=DEFAULT, value=[Rate of successful kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:37:21,292 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginFailure with annotation @org.apache.hadoop.metrics2.annotation.Metric(sampleName=Ops, always=false, about=, type=DEFAULT, value=[Rate of failed kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:37:21,293 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.getGroups with annotation @org.apache.hadoop.metrics2.annotation.Metric(sampleName=Ops, always=false, about=, type=DEFAULT, value=[GetGroups], valueName=Time)
+DEBUG 2017-10-24 20:37:21,293 field private org.apache.hadoop.metrics2.lib.MutableGaugeLong org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailuresTotal with annotation @org.apache.hadoop.metrics2.annotation.Metric(sampleName=Ops, always=false, about=, type=DEFAULT, value=[Renewal failures since startup], valueName=Time)
+DEBUG 2017-10-24 20:37:21,293 field private org.apache.hadoop.metrics2.lib.MutableGaugeInt org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailures with annotation @org.apache.hadoop.metrics2.annotation.Metric(sampleName=Ops, always=false, about=, type=DEFAULT, value=[Renewal failures since last successful login], valueName=Time)
+DEBUG 2017-10-24 20:37:21,294 UgiMetrics, User and group related metrics
+DEBUG 2017-10-24 20:37:21,368 Kerberos krb5 configuration not found, setting default realm to empty
+DEBUG 2017-10-24 20:37:21,370  Creating new Groups object
+DEBUG 2017-10-24 20:37:21,371 Trying to load the custom-built native-hadoop library...
+DEBUG 2017-10-24 20:37:21,372 Failed to load native-hadoop with error: java.lang.UnsatisfiedLinkError: no hadoop in java.library.path
+DEBUG 2017-10-24 20:37:21,372 java.library.path=C:\Program Files\Java\jdk1.8.0_152\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\;C:\Users\ChristopherK\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\MinGw\bin;C:\MinGw\bin\g++.exe;;C:\WINDOWS\System32;;.
+WARN  2017-10-24 20:37:21,372 Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+DEBUG 2017-10-24 20:37:21,373 Falling back to shell based
+DEBUG 2017-10-24 20:37:21,373 Group mapping impl=org.apache.hadoop.security.ShellBasedUnixGroupsMapping
+DEBUG 2017-10-24 20:37:21,392 Group mapping impl=org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback; cacheTimeout=300000; warningDeltaMs=5000
+DEBUG 2017-10-24 20:37:21,395 hadoop login
+DEBUG 2017-10-24 20:37:21,396 hadoop login commit
+DEBUG 2017-10-24 20:37:21,399 using local user:NTUserPrincipal: ChristopherK
+DEBUG 2017-10-24 20:37:21,399 Using user: "NTUserPrincipal: ChristopherK" with name ChristopherK
+DEBUG 2017-10-24 20:37:21,399 User entry: "ChristopherK"
+DEBUG 2017-10-24 20:37:21,399 Assuming keytab is managed externally since logged in from subject.
+DEBUG 2017-10-24 20:37:21,400 UGI loginUser:ChristopherK (auth:SIMPLE)
+INFO  2017-10-24 20:37:21,540 Process identifier=hconnection-0x1b26f7b2 connecting to ZooKeeper ensemble=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181
+INFO  2017-10-24 20:37:26,046 Client environment:zookeeper.version=3.4.6-205--1, built on 08/26/2017 09:30 GMT
+INFO  2017-10-24 20:37:26,046 Client environment:host.name=DESKTOP-I1R0NVQ
+INFO  2017-10-24 20:37:26,046 Client environment:java.version=1.8.0_152
+INFO  2017-10-24 20:37:26,046 Client environment:java.vendor=Oracle Corporation
+INFO  2017-10-24 20:37:26,046 Client environment:java.home=C:\Program Files\Java\jdk1.8.0_152\jre
+INFO  2017-10-24 20:37:26,046 Client environment:java.class.path=C:\Program Files\Java\jdk1.8.0_152\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\zipfs.jar;E:\EclipseWorkspaces\434\hadoop-playball;E:\EclipseWorkspaces\434\hadoop-playball\target\classes;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-client\2.8.1\hadoop-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-common\2.8.1\hadoop-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\commons-cli\commons-cli\1.2\commons-cli-1.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\commons\commons-math3\3.1.1\commons-math3-3.1.1.jar;C:\Users\ChristopherK\.m2\repository\xmlenc\xmlenc\0.52\xmlenc-0.52.jar;C:\Users\ChristopherK\.m2\repository\org\apache\httpcomponents\httpclient\4.5.2\httpclient-4.5.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\httpcomponents\httpcore\4.4.4\httpcore-4.4.4.jar;C:\Users\ChristopherK\.m2\repository\commons-net\commons-net\3.1\commons-net-3.1.jar;C:\Users\ChristopherK\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\ChristopherK\.m2\repository\org\mortbay\jetty\jetty-sslengine\6.1.26\jetty-sslengine-6.1.26.jar;C:\Users\ChristopherK\.m2\repository\javax\servlet\jsp\jsp-api\2.1\jsp-api-2.1.jar;C:\Users\ChristopherK\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\ChristopherK\.m2\repository\commons-configuration\commons-configuration\1.6\commons-configuration-1.6.jar;C:\Users\ChristopherK\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar;C:\Users\ChristopherK\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar;C:\Users\ChristopherK\.m2\repository\commons-beanutils\commons-beanutils-core\1.8.0\commons-beanutils-core-1.8.0.jar;C:\Users\ChristopherK\.m2\repository\org\slf4j\slf4j-api\1.7.10\slf4j-api-1.7.10.jar;C:\Users\ChristopherK\.m2\repository\org\slf4j\slf4j-log4j12\1.7.10\slf4j-log4j12-1.7.10.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\apache\avro\avro\1.7.4\avro-1.7.4.jar;C:\Users\ChristopherK\.m2\repository\com\thoughtworks\paranamer\paranamer\2.3\paranamer-2.3.jar;C:\Users\ChristopherK\.m2\repository\org\xerial\snappy\snappy-java\1.0.4.1\snappy-java-1.0.4.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-client\2.7.1\curator-client-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-recipes\2.7.1\curator-recipes-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\code\findbugs\jsr305\3.0.0\jsr305-3.0.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\htrace\htrace-core4\4.0.1-incubating\htrace-core4-4.0.1-incubating.jar;C:\Users\ChristopherK\.m2\repository\org\apache\commons\commons-compress\1.4.1\commons-compress-1.4.1.jar;C:\Users\ChristopherK\.m2\repository\org\tukaani\xz\1.0\xz-1.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-hdfs\2.8.1\hadoop-hdfs-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-hdfs-client\2.8.1\hadoop-hdfs-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\com\squareup\okhttp\okhttp\2.4.0\okhttp-2.4.0.jar;C:\Users\ChristopherK\.m2\repository\com\squareup\okio\okio\1.4.0\okio-1.4.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-app\2.8.1\hadoop-mapreduce-client-app-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-common\2.8.1\hadoop-mapreduce-client-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-client\2.8.1\hadoop-yarn-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-server-common\2.8.1\hadoop-yarn-server-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-shuffle\2.8.1\hadoop-mapreduce-client-shuffle-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\fusesource\leveldbjni\leveldbjni-all\1.8\leveldbjni-all-1.8.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-api\2.8.1\hadoop-yarn-api-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-core\2.8.1\hadoop-mapreduce-client-core-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-common\2.8.1\hadoop-yarn-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\javax\xml\bind\jaxb-api\2.2.2\jaxb-api-2.2.2.jar;C:\Users\ChristopherK\.m2\repository\javax\xml\stream\stax-api\1.0-2\stax-api-1.0-2.jar;C:\Users\ChristopherK\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\ChristopherK\.m2\repository\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar;C:\Users\ChristopherK\.m2\repository\com\sun\jersey\jersey-core\1.9\jersey-core-1.9.jar;C:\Users\ChristopherK\.m2\repository\com\sun\jersey\jersey-client\1.9\jersey-client-1.9.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-jaxrs\1.9.13\jackson-jaxrs-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-xc\1.9.13\jackson-xc-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-jobclient\2.8.1\hadoop-mapreduce-client-jobclient-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-annotations\2.8.1\hadoop-annotations-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-client\1.1.2.2.6.2.0-205\hbase-client-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-annotations\1.1.2.2.6.2.0-205\hbase-annotations-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-common\1.1.2.2.6.2.0-205\hbase-common-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\mortbay\jetty\jetty-util\6.1.26.hwx\jetty-util-6.1.26.hwx.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-protocol\1.1.2.2.6.2.0-205\hbase-protocol-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\commons-codec\commons-codec\1.9\commons-codec-1.9.jar;C:\Users\ChristopherK\.m2\repository\commons-io\commons-io\2.4\commons-io-2.4.jar;C:\Users\ChristopherK\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\ChristopherK\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\ChristopherK\.m2\repository\com\google\guava\guava\12.0.1\guava-12.0.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\protobuf\protobuf-java\2.5.0\protobuf-java-2.5.0.jar;C:\Users\ChristopherK\.m2\repository\io\netty\netty-all\4.0.23.Final\netty-all-4.0.23.Final.jar;C:\Users\ChristopherK\.m2\repository\org\apache\zookeeper\zookeeper\3.4.6.2.6.2.0-205\zookeeper-3.4.6.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\htrace\htrace-core\3.1.0-incubating\htrace-core-3.1.0-incubating.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\jruby\jcodings\jcodings\1.0.8\jcodings-1.0.8.jar;C:\Users\ChristopherK\.m2\repository\org\jruby\joni\joni\2.1.2\joni-2.1.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-auth\2.7.3.2.6.2.0-205\hadoop-auth-2.7.3.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\com\nimbusds\nimbus-jose-jwt\3.9\nimbus-jose-jwt-3.9.jar;C:\Users\ChristopherK\.m2\repository\net\jcip\jcip-annotations\1.0\jcip-annotations-1.0.jar;C:\Users\ChristopherK\.m2\repository\net\minidev\json-smart\1.1.1\json-smart-1.1.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\server\apacheds-kerberos-codec\2.0.0-M15\apacheds-kerberos-codec-2.0.0-M15.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\server\apacheds-i18n\2.0.0-M15\apacheds-i18n-2.0.0-M15.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\api\api-asn1-api\1.0.0-M20\api-asn1-api-1.0.0-M20.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\api\api-util\1.0.0-M20\api-util-1.0.0-M20.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-framework\2.7.1\curator-framework-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\com\github\stephenc\findbugs\findbugs-annotations\1.3.9-1\findbugs-annotations-1.3.9-1.jar;C:\Users\ChristopherK\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\ChristopherK\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Program Files\Java\jdk1.8.0_152\lib\tools.jar
+INFO  2017-10-24 20:37:26,046 Client environment:java.library.path=C:\Program Files\Java\jdk1.8.0_152\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\;C:\Users\ChristopherK\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\MinGw\bin;C:\MinGw\bin\g++.exe;;C:\WINDOWS\System32;;.
+INFO  2017-10-24 20:37:26,046 Client environment:java.io.tmpdir=C:\Users\CHRIST~1\AppData\Local\Temp\
+INFO  2017-10-24 20:37:26,046 Client environment:java.compiler=<NA>
+INFO  2017-10-24 20:37:26,046 Client environment:os.name=Windows 10
+INFO  2017-10-24 20:37:26,046 Client environment:os.arch=amd64
+INFO  2017-10-24 20:37:26,046 Client environment:os.version=10.0
+INFO  2017-10-24 20:37:26,047 Client environment:user.name=ChristopherK
+INFO  2017-10-24 20:37:26,047 Client environment:user.home=C:\Users\ChristopherK
+INFO  2017-10-24 20:37:26,047 Client environment:user.dir=E:\EclipseWorkspaces\434\hadoop-playball
+INFO  2017-10-24 20:37:26,047 Initiating client connection, connectString=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181 sessionTimeout=90000 watcher=org.apache.hadoop.hbase.zookeeper.PendingWatcher@5c072e3f
+WARN  2017-10-24 20:37:26,049 No IP address found for server: 10.128.0.3
+		:2181
+java.net.UnknownHostException: 10.128.0.3
+		
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.zookeeper.client.StaticHostProvider.resolveAndShuffle(StaticHostProvider.java:98)
+	at org.apache.zookeeper.client.StaticHostProvider.<init>(StaticHostProvider.java:61)
+	at org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:445)
+	at org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:380)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.checkZk(RecoverableZooKeeper.java:141)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.<init>(RecoverableZooKeeper.java:128)
+	at org.apache.hadoop.hbase.zookeeper.ZKUtil.connect(ZKUtil.java:138)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:176)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:150)
+	at org.apache.hadoop.hbase.client.ZooKeeperKeepAliveConnection.<init>(ZooKeeperKeepAliveConnection.java:43)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.getKeepAliveZooKeeperWatcher(ConnectionManager.java:1681)
+	at org.apache.hadoop.hbase.client.ZooKeeperRegistry.getClusterId(ZooKeeperRegistry.java:104)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.retrieveClusterId(ConnectionManager.java:901)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.<init>(ConnectionManager.java:646)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:238)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:218)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:119)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:61)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:47)
+	at edu.rosehulman.hadoop.Main.run(Main.java:27)
+	at edu.rosehulman.hadoop.Main.main(Main.java:101)
+DEBUG 2017-10-24 20:37:26,050 zookeeper.disableAutoWatchReset is false
+INFO  2017-10-24 20:37:26,158 Opening socket connection to server 10.128.0.4/10.128.0.4:2181. Will not attempt to authenticate using SASL (unknown error)
+WARN  2017-10-24 20:37:47,161 Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection timed out: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1125)
+DEBUG 2017-10-24 20:37:47,161 Ignoring exception during shutdown input
+java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.shutdownInput(SocketChannelImpl.java:780)
+	at sun.nio.ch.SocketAdaptor.shutdownInput(SocketAdaptor.java:399)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.cleanup(ClientCnxnSocketNIO.java:200)
+	at org.apache.zookeeper.ClientCnxn$SendThread.cleanup(ClientCnxn.java:1229)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1154)
+DEBUG 2017-10-24 20:37:47,161 Ignoring exception during shutdown output
+java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.shutdownOutput(SocketChannelImpl.java:797)
+	at sun.nio.ch.SocketAdaptor.shutdownOutput(SocketAdaptor.java:407)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.cleanup(ClientCnxnSocketNIO.java:207)
+	at org.apache.zookeeper.ClientCnxn$SendThread.cleanup(ClientCnxn.java:1229)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1154)
+INFO  2017-10-24 20:37:47,263 Opening socket connection to server 10.128.0.5/10.128.0.5:2181. Will not attempt to authenticate using SASL (unknown error)
+WARN  2017-10-24 20:37:47,266 Possibly transient ZooKeeper, quorum=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181, exception=org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase-unsecure/hbaseid
+WARN  2017-10-24 20:38:08,266 Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection timed out: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1125)
+DEBUG 2017-10-24 20:38:08,266 Ignoring exception during shutdown input
+java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.shutdownInput(SocketChannelImpl.java:780)
+	at sun.nio.ch.SocketAdaptor.shutdownInput(SocketAdaptor.java:399)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.cleanup(ClientCnxnSocketNIO.java:200)
+	at org.apache.zookeeper.ClientCnxn$SendThread.cleanup(ClientCnxn.java:1229)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1154)
+DEBUG 2017-10-24 20:38:08,266 Ignoring exception during shutdown output
+java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.shutdownOutput(SocketChannelImpl.java:797)
+	at sun.nio.ch.SocketAdaptor.shutdownOutput(SocketAdaptor.java:407)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.cleanup(ClientCnxnSocketNIO.java:207)
+	at org.apache.zookeeper.ClientCnxn$SendThread.cleanup(ClientCnxn.java:1229)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1154)
+WARN  2017-10-24 20:38:08,366 Possibly transient ZooKeeper, quorum=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181, exception=org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase-unsecure/hbaseid
+DEBUG 2017-10-24 20:38:13,140 Failed to detect a valid hadoop home directory
+java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:55)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:46)
+	at edu.rosehulman.hadoop.Main.run(Main.java:27)
+	at edu.rosehulman.hadoop.Main.main(Main.java:100)
+WARN  2017-10-24 20:38:13,146 Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+DEBUG 2017-10-24 20:38:13,146 Failed to find winutils.exe
+java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.fileNotFoundException(Shell.java:528)
+	at org.apache.hadoop.util.Shell.getHadoopHomeDir(Shell.java:549)
+	at org.apache.hadoop.util.Shell.getQualifiedBin(Shell.java:572)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:669)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:55)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:46)
+	at edu.rosehulman.hadoop.Main.run(Main.java:27)
+	at edu.rosehulman.hadoop.Main.main(Main.java:100)
+Caused by: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	... 9 more
+DEBUG 2017-10-24 20:38:13,235 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginSuccess with annotation @org.apache.hadoop.metrics2.annotation.Metric(sampleName=Ops, about=, always=false, type=DEFAULT, value=[Rate of successful kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:38:13,242 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginFailure with annotation @org.apache.hadoop.metrics2.annotation.Metric(sampleName=Ops, about=, always=false, type=DEFAULT, value=[Rate of failed kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-24 20:38:13,242 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.getGroups with annotation @org.apache.hadoop.metrics2.annotation.Metric(sampleName=Ops, about=, always=false, type=DEFAULT, value=[GetGroups], valueName=Time)
+DEBUG 2017-10-24 20:38:13,242 field private org.apache.hadoop.metrics2.lib.MutableGaugeLong org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailuresTotal with annotation @org.apache.hadoop.metrics2.annotation.Metric(sampleName=Ops, about=, always=false, type=DEFAULT, value=[Renewal failures since startup], valueName=Time)
+DEBUG 2017-10-24 20:38:13,243 field private org.apache.hadoop.metrics2.lib.MutableGaugeInt org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailures with annotation @org.apache.hadoop.metrics2.annotation.Metric(sampleName=Ops, about=, always=false, type=DEFAULT, value=[Renewal failures since last successful login], valueName=Time)
+DEBUG 2017-10-24 20:38:13,243 UgiMetrics, User and group related metrics
+DEBUG 2017-10-24 20:38:13,315 Kerberos krb5 configuration not found, setting default realm to empty
+DEBUG 2017-10-24 20:38:13,317  Creating new Groups object
+DEBUG 2017-10-24 20:38:13,319 Trying to load the custom-built native-hadoop library...
+DEBUG 2017-10-24 20:38:13,320 Failed to load native-hadoop with error: java.lang.UnsatisfiedLinkError: no hadoop in java.library.path
+DEBUG 2017-10-24 20:38:13,320 java.library.path=C:\Program Files\Java\jdk1.8.0_152\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\;C:\Users\ChristopherK\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\MinGw\bin;C:\MinGw\bin\g++.exe;;C:\WINDOWS\System32;;.
+WARN  2017-10-24 20:38:13,320 Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+DEBUG 2017-10-24 20:38:13,320 Falling back to shell based
+DEBUG 2017-10-24 20:38:13,321 Group mapping impl=org.apache.hadoop.security.ShellBasedUnixGroupsMapping
+DEBUG 2017-10-24 20:38:13,340 Group mapping impl=org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback; cacheTimeout=300000; warningDeltaMs=5000
+DEBUG 2017-10-24 20:38:13,343 hadoop login
+DEBUG 2017-10-24 20:38:13,343 hadoop login commit
+DEBUG 2017-10-24 20:38:13,347 using local user:NTUserPrincipal: ChristopherK
+DEBUG 2017-10-24 20:38:13,347 Using user: "NTUserPrincipal: ChristopherK" with name ChristopherK
+DEBUG 2017-10-24 20:38:13,347 User entry: "ChristopherK"
+DEBUG 2017-10-24 20:38:13,347 Assuming keytab is managed externally since logged in from subject.
+DEBUG 2017-10-24 20:38:13,347 UGI loginUser:ChristopherK (auth:SIMPLE)
+INFO  2017-10-24 20:38:13,489 Process identifier=hconnection-0x1b26f7b2 connecting to ZooKeeper ensemble=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181
+INFO  2017-10-24 20:38:17,995 Client environment:zookeeper.version=3.4.6-205--1, built on 08/26/2017 09:30 GMT
+INFO  2017-10-24 20:38:17,995 Client environment:host.name=DESKTOP-I1R0NVQ
+INFO  2017-10-24 20:38:17,995 Client environment:java.version=1.8.0_152
+INFO  2017-10-24 20:38:17,995 Client environment:java.vendor=Oracle Corporation
+INFO  2017-10-24 20:38:17,995 Client environment:java.home=C:\Program Files\Java\jdk1.8.0_152\jre
+INFO  2017-10-24 20:38:17,995 Client environment:java.class.path=C:\Program Files\Java\jdk1.8.0_152\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_152\jre\lib\ext\zipfs.jar;E:\EclipseWorkspaces\434\hadoop-playball;E:\EclipseWorkspaces\434\hadoop-playball\target\classes;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-client\2.8.1\hadoop-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-common\2.8.1\hadoop-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\commons-cli\commons-cli\1.2\commons-cli-1.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\commons\commons-math3\3.1.1\commons-math3-3.1.1.jar;C:\Users\ChristopherK\.m2\repository\xmlenc\xmlenc\0.52\xmlenc-0.52.jar;C:\Users\ChristopherK\.m2\repository\org\apache\httpcomponents\httpclient\4.5.2\httpclient-4.5.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\httpcomponents\httpcore\4.4.4\httpcore-4.4.4.jar;C:\Users\ChristopherK\.m2\repository\commons-net\commons-net\3.1\commons-net-3.1.jar;C:\Users\ChristopherK\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\ChristopherK\.m2\repository\org\mortbay\jetty\jetty-sslengine\6.1.26\jetty-sslengine-6.1.26.jar;C:\Users\ChristopherK\.m2\repository\javax\servlet\jsp\jsp-api\2.1\jsp-api-2.1.jar;C:\Users\ChristopherK\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\ChristopherK\.m2\repository\commons-configuration\commons-configuration\1.6\commons-configuration-1.6.jar;C:\Users\ChristopherK\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar;C:\Users\ChristopherK\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar;C:\Users\ChristopherK\.m2\repository\commons-beanutils\commons-beanutils-core\1.8.0\commons-beanutils-core-1.8.0.jar;C:\Users\ChristopherK\.m2\repository\org\slf4j\slf4j-api\1.7.10\slf4j-api-1.7.10.jar;C:\Users\ChristopherK\.m2\repository\org\slf4j\slf4j-log4j12\1.7.10\slf4j-log4j12-1.7.10.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.13\jackson-core-asl-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\apache\avro\avro\1.7.4\avro-1.7.4.jar;C:\Users\ChristopherK\.m2\repository\com\thoughtworks\paranamer\paranamer\2.3\paranamer-2.3.jar;C:\Users\ChristopherK\.m2\repository\org\xerial\snappy\snappy-java\1.0.4.1\snappy-java-1.0.4.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-client\2.7.1\curator-client-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-recipes\2.7.1\curator-recipes-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\code\findbugs\jsr305\3.0.0\jsr305-3.0.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\htrace\htrace-core4\4.0.1-incubating\htrace-core4-4.0.1-incubating.jar;C:\Users\ChristopherK\.m2\repository\org\apache\commons\commons-compress\1.4.1\commons-compress-1.4.1.jar;C:\Users\ChristopherK\.m2\repository\org\tukaani\xz\1.0\xz-1.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-hdfs\2.8.1\hadoop-hdfs-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-hdfs-client\2.8.1\hadoop-hdfs-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\com\squareup\okhttp\okhttp\2.4.0\okhttp-2.4.0.jar;C:\Users\ChristopherK\.m2\repository\com\squareup\okio\okio\1.4.0\okio-1.4.0.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-app\2.8.1\hadoop-mapreduce-client-app-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-common\2.8.1\hadoop-mapreduce-client-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-client\2.8.1\hadoop-yarn-client-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-server-common\2.8.1\hadoop-yarn-server-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-shuffle\2.8.1\hadoop-mapreduce-client-shuffle-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\fusesource\leveldbjni\leveldbjni-all\1.8\leveldbjni-all-1.8.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-api\2.8.1\hadoop-yarn-api-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-core\2.8.1\hadoop-mapreduce-client-core-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-yarn-common\2.8.1\hadoop-yarn-common-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\javax\xml\bind\jaxb-api\2.2.2\jaxb-api-2.2.2.jar;C:\Users\ChristopherK\.m2\repository\javax\xml\stream\stax-api\1.0-2\stax-api-1.0-2.jar;C:\Users\ChristopherK\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\ChristopherK\.m2\repository\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar;C:\Users\ChristopherK\.m2\repository\com\sun\jersey\jersey-core\1.9\jersey-core-1.9.jar;C:\Users\ChristopherK\.m2\repository\com\sun\jersey\jersey-client\1.9\jersey-client-1.9.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-jaxrs\1.9.13\jackson-jaxrs-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-xc\1.9.13\jackson-xc-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-mapreduce-client-jobclient\2.8.1\hadoop-mapreduce-client-jobclient-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-annotations\2.8.1\hadoop-annotations-2.8.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-client\1.1.2.2.6.2.0-205\hbase-client-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-annotations\1.1.2.2.6.2.0-205\hbase-annotations-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-common\1.1.2.2.6.2.0-205\hbase-common-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\mortbay\jetty\jetty-util\6.1.26.hwx\jetty-util-6.1.26.hwx.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hbase\hbase-protocol\1.1.2.2.6.2.0-205\hbase-protocol-1.1.2.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\commons-codec\commons-codec\1.9\commons-codec-1.9.jar;C:\Users\ChristopherK\.m2\repository\commons-io\commons-io\2.4\commons-io-2.4.jar;C:\Users\ChristopherK\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\ChristopherK\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\ChristopherK\.m2\repository\com\google\guava\guava\12.0.1\guava-12.0.1.jar;C:\Users\ChristopherK\.m2\repository\com\google\protobuf\protobuf-java\2.5.0\protobuf-java-2.5.0.jar;C:\Users\ChristopherK\.m2\repository\io\netty\netty-all\4.0.23.Final\netty-all-4.0.23.Final.jar;C:\Users\ChristopherK\.m2\repository\org\apache\zookeeper\zookeeper\3.4.6.2.6.2.0-205\zookeeper-3.4.6.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\org\apache\htrace\htrace-core\3.1.0-incubating\htrace-core-3.1.0-incubating.jar;C:\Users\ChristopherK\.m2\repository\org\codehaus\jackson\jackson-mapper-asl\1.9.13\jackson-mapper-asl-1.9.13.jar;C:\Users\ChristopherK\.m2\repository\org\jruby\jcodings\jcodings\1.0.8\jcodings-1.0.8.jar;C:\Users\ChristopherK\.m2\repository\org\jruby\joni\joni\2.1.2\joni-2.1.2.jar;C:\Users\ChristopherK\.m2\repository\org\apache\hadoop\hadoop-auth\2.7.3.2.6.2.0-205\hadoop-auth-2.7.3.2.6.2.0-205.jar;C:\Users\ChristopherK\.m2\repository\com\nimbusds\nimbus-jose-jwt\3.9\nimbus-jose-jwt-3.9.jar;C:\Users\ChristopherK\.m2\repository\net\jcip\jcip-annotations\1.0\jcip-annotations-1.0.jar;C:\Users\ChristopherK\.m2\repository\net\minidev\json-smart\1.1.1\json-smart-1.1.1.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\server\apacheds-kerberos-codec\2.0.0-M15\apacheds-kerberos-codec-2.0.0-M15.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\server\apacheds-i18n\2.0.0-M15\apacheds-i18n-2.0.0-M15.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\api\api-asn1-api\1.0.0-M20\api-asn1-api-1.0.0-M20.jar;C:\Users\ChristopherK\.m2\repository\org\apache\directory\api\api-util\1.0.0-M20\api-util-1.0.0-M20.jar;C:\Users\ChristopherK\.m2\repository\org\apache\curator\curator-framework\2.7.1\curator-framework-2.7.1.jar;C:\Users\ChristopherK\.m2\repository\com\github\stephenc\findbugs\findbugs-annotations\1.3.9-1\findbugs-annotations-1.3.9-1.jar;C:\Users\ChristopherK\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\ChristopherK\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Program Files\Java\jdk1.8.0_152\lib\tools.jar
+INFO  2017-10-24 20:38:17,995 Client environment:java.library.path=C:\Program Files\Java\jdk1.8.0_152\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\ChristopherK\AppData\Local\Programs\Python\Python36-32\;C:\Users\ChristopherK\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\MinGw\bin;C:\MinGw\bin\g++.exe;;C:\WINDOWS\System32;;.
+INFO  2017-10-24 20:38:17,995 Client environment:java.io.tmpdir=C:\Users\CHRIST~1\AppData\Local\Temp\
+INFO  2017-10-24 20:38:17,995 Client environment:java.compiler=<NA>
+INFO  2017-10-24 20:38:17,995 Client environment:os.name=Windows 10
+INFO  2017-10-24 20:38:17,995 Client environment:os.arch=amd64
+INFO  2017-10-24 20:38:17,996 Client environment:os.version=10.0
+INFO  2017-10-24 20:38:17,996 Client environment:user.name=ChristopherK
+INFO  2017-10-24 20:38:17,996 Client environment:user.home=C:\Users\ChristopherK
+INFO  2017-10-24 20:38:17,996 Client environment:user.dir=E:\EclipseWorkspaces\434\hadoop-playball
+INFO  2017-10-24 20:38:17,996 Initiating client connection, connectString=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181 sessionTimeout=90000 watcher=org.apache.hadoop.hbase.zookeeper.PendingWatcher@5c072e3f
+WARN  2017-10-24 20:38:17,998 No IP address found for server: 10.128.0.3
+		:2181
+java.net.UnknownHostException: 10.128.0.3
+		
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.zookeeper.client.StaticHostProvider.resolveAndShuffle(StaticHostProvider.java:98)
+	at org.apache.zookeeper.client.StaticHostProvider.<init>(StaticHostProvider.java:61)
+	at org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:445)
+	at org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:380)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.checkZk(RecoverableZooKeeper.java:141)
+	at org.apache.hadoop.hbase.zookeeper.RecoverableZooKeeper.<init>(RecoverableZooKeeper.java:128)
+	at org.apache.hadoop.hbase.zookeeper.ZKUtil.connect(ZKUtil.java:138)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:176)
+	at org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher.<init>(ZooKeeperWatcher.java:150)
+	at org.apache.hadoop.hbase.client.ZooKeeperKeepAliveConnection.<init>(ZooKeeperKeepAliveConnection.java:43)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.getKeepAliveZooKeeperWatcher(ConnectionManager.java:1681)
+	at org.apache.hadoop.hbase.client.ZooKeeperRegistry.getClusterId(ZooKeeperRegistry.java:104)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.retrieveClusterId(ConnectionManager.java:901)
+	at org.apache.hadoop.hbase.client.ConnectionManager$HConnectionImplementation.<init>(ConnectionManager.java:646)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:238)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:218)
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:119)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:60)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:46)
+	at edu.rosehulman.hadoop.Main.run(Main.java:27)
+	at edu.rosehulman.hadoop.Main.main(Main.java:100)
+DEBUG 2017-10-24 20:38:17,999 zookeeper.disableAutoWatchReset is false
+INFO  2017-10-24 20:38:18,106 Opening socket connection to server 10.128.0.4/10.128.0.4:2181. Will not attempt to authenticate using SASL (unknown error)
+WARN  2017-10-24 20:38:39,108 Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection timed out: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1125)
+DEBUG 2017-10-24 20:38:39,108 Ignoring exception during shutdown input
+java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.shutdownInput(SocketChannelImpl.java:780)
+	at sun.nio.ch.SocketAdaptor.shutdownInput(SocketAdaptor.java:399)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.cleanup(ClientCnxnSocketNIO.java:200)
+	at org.apache.zookeeper.ClientCnxn$SendThread.cleanup(ClientCnxn.java:1229)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1154)
+DEBUG 2017-10-24 20:38:39,108 Ignoring exception during shutdown output
+java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.shutdownOutput(SocketChannelImpl.java:797)
+	at sun.nio.ch.SocketAdaptor.shutdownOutput(SocketAdaptor.java:407)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.cleanup(ClientCnxnSocketNIO.java:207)
+	at org.apache.zookeeper.ClientCnxn$SendThread.cleanup(ClientCnxn.java:1229)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1154)
+INFO  2017-10-24 20:38:39,211 Opening socket connection to server 10.128.0.5/10.128.0.5:2181. Will not attempt to authenticate using SASL (unknown error)
+WARN  2017-10-24 20:38:39,214 Possibly transient ZooKeeper, quorum=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181, exception=org.apache.zookeeper.KeeperException$ConnectionLossException: KeeperErrorCode = ConnectionLoss for /hbase-unsecure/hbaseid

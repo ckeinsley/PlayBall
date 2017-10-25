@@ -17,18 +17,25 @@ import org.apache.log4j.PatternLayout;
 public class Main {
 
 	private Admin admin;
+	private boolean debug;
+
+	public Main(boolean debugMode) {
+		debug = debugMode;
+	}
 
 	public void run() {
 		attemptConnection();
-		printTables();
 		Scanner in = new Scanner(System.in);
 		while (true) {
 			System.out.print("PlayBall > ");
 			String line = in.nextLine();
-			if (line.equals("exit") || line.equals("quit")) {
-				System.out.println("Exiting");
+			if (line.startsWith("exit") || line.startsWith("quit")) {
 				in.close();
 				exit();
+			} else if (line.startsWith("search")) {
+
+			} else if (debug && line.startsWith("show tables")) {
+				printTables();
 			}
 		}
 	}
@@ -48,7 +55,7 @@ public class Main {
 		Configuration config = HBaseConfiguration.create();
 		config.addResource("hbase-site.xml");
 		config.set("zookeeper.znode.parent", "/hbase-unsecure");
-		
+
 		System.out.println("Creating Connection");
 		Connection conn = ConnectionFactory.createConnection(config);
 		admin = conn.getAdmin();
@@ -70,6 +77,7 @@ public class Main {
 	}
 
 	public void exit() {
+		System.out.println("Exiting");
 		try {
 			admin.getConnection().close();
 			System.exit(0);
@@ -81,8 +89,14 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+		boolean debugMode = false;
+		for (int i = 0; i < args.length; i++) {
+			if (args[i].equals("-d")) {
+				debugMode = true;
+			}
+		}
 		initLogger();
-		Main main = new Main();
+		Main main = new Main(debugMode);
 		main.run();
 	}
 
