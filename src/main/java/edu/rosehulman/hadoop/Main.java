@@ -52,7 +52,7 @@ public class Main {
 		Configuration config = HBaseConfiguration.create();
 		System.out.println("Adding Resource");
 		config.addResource("hbase-site.xml");
-		config.set("zookeeper.znode.parent", "");
+		config.set("zookeeper.znode.parent", "/hbase-unsecure");
 		System.out.println("Creating Connection");
 		Connection conn = ConnectionFactory.createConnection(config);
 		System.out.println("Getting Admin");
