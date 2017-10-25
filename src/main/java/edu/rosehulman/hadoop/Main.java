@@ -18,6 +18,7 @@ public class Main {
 
 	private Admin admin;
 	private boolean debug;
+	private Searcher searcher;
 
 	public Main(boolean debugMode) {
 		debug = debugMode;
@@ -33,7 +34,7 @@ public class Main {
 				in.close();
 				exit();
 			} else if (line.startsWith("search")) {
-
+				searcher.search(line.contains("-n"), line);
 			} else if (debug && line.startsWith("show tables")) {
 				printTables();
 			}
@@ -59,6 +60,7 @@ public class Main {
 		System.out.println("Creating Connection");
 		Connection conn = ConnectionFactory.createConnection(config);
 		admin = conn.getAdmin();
+		searcher = new Searcher(admin);
 	}
 
 	private void printTables() {
@@ -68,7 +70,6 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	private TableName[] getTables() throws IOException {
