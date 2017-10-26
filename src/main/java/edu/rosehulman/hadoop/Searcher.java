@@ -10,6 +10,7 @@ import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.ResultScanner;
 import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.client.Table;
+import org.apache.hadoop.hbase.util.Bytes;
 
 public class Searcher {
 
@@ -96,7 +97,8 @@ public class Searcher {
 		ResultScanner results = table.getScanner(scanner);
 		Iterator<Result> iter = results.iterator();
 		while (iter.hasNext()) {
-			System.out.println(iter.next());
+			Result r = iter.next();
+			System.out.println(Bytes.toString(r.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("batterCount"))));
 		}
 	}
 
