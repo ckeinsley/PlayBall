@@ -88,8 +88,11 @@ public class Searcher {
 
 	private void practiceSearch() throws IOException {
 		// Can pass in the TableName object from conn.getAdmin().listTables();
-		Table table = conn.getTable(TableName.valueOf("Plays2015"));
+		Table table = conn.getTable(TableName.valueOf("plays2015"));
 		Scan scanner = new Scan();
+		// scanner.addFamily(Bytes.toBytes("play_data"));
+		// scanner.addFamily(Bytes.toBytes("play_num"));
+		// scanner.addFamily(Bytes.toBytes("game"));
 		ResultScanner results = table.getScanner(scanner);
 		Iterator<Result> iter = results.iterator();
 		while (iter.hasNext()) {
