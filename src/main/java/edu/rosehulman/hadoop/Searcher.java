@@ -1,10 +1,20 @@
 package edu.rosehulman.hadoop;
 
-import org.apache.hadoop.hbase.client.Admin;
+import java.io.IOException;
+import java.util.Iterator;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.TableName;
+import org.apache.hadoop.hbase.client.Connection;
+import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.client.Table;
 
 public class Searcher {
 
-	private Admin admin;
+	private Configuration config;
+	private Connection conn;
 	private String homeTeam;
 	private String awayTeam;
 	private String year;
@@ -12,9 +22,10 @@ public class Searcher {
 	private String day;
 	private String startTime;
 
-	public Searcher(Admin hbaseAdmin) {
+	public Searcher(Configuration configuration, Connection connection) {
 		resetFields();
-		admin = hbaseAdmin;
+		conn = connection;
+		config = configuration;
 	}
 
 	public void search(boolean newSearch, String line) {
@@ -25,8 +36,13 @@ public class Searcher {
 			String[] tokens = line.split("\\s+");
 			parseFields(tokens);
 			System.out.println(this);
+			lookupTeam();
+			practiceSearch();
 		} catch (ArrayIndexOutOfBoundsException e) {
 			throw new MismatchedArgsException("Wrong number of arguments for the specified fields");
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Failed when looking up " + this);
 		}
 	}
 
@@ -63,6 +79,21 @@ public class Searcher {
 			default:
 				break;
 			}
+		}
+	}
+
+	private void lookupTeam() {
+
+	}
+
+	private void practiceSearch() throws IOException {
+		// Can pass in the TableName object from conn.getAdmin().listTables();
+		Table table = conn.getTable(TableName.valueOf("Plays2015"));
+		Scan scanner = new Scan();
+		ResultScanner results = table.getScanner(scanner);
+		Iterator<Result> iter = results.iterator();
+		while (iter.hasNext()) {
+			System.out.println(iter.next());
 		}
 	}
 

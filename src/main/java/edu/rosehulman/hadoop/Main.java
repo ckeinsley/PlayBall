@@ -7,7 +7,6 @@ import java.util.Scanner;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
-import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.log4j.FileAppender;
@@ -16,7 +15,8 @@ import org.apache.log4j.PatternLayout;
 
 public class Main {
 
-	private Admin admin;
+	private Connection conn;
+	private Configuration config;
 	private boolean debug;
 	private Searcher searcher;
 
@@ -37,6 +37,8 @@ public class Main {
 				search(line);
 			} else if (debug && line.startsWith("show tables")) {
 				printTables();
+			} else {
+				System.out.println("Unrecognized command: " + line);
 			}
 		}
 	}
@@ -53,14 +55,13 @@ public class Main {
 
 	private void connect() throws IOException {
 		System.out.println("Constructing Config");
-		Configuration config = HBaseConfiguration.create();
+		config = HBaseConfiguration.create();
 		config.addResource("hbase-site.xml");
 		config.set("zookeeper.znode.parent", "/hbase-unsecure");
 
 		System.out.println("Creating Connection");
-		Connection conn = ConnectionFactory.createConnection(config);
-		admin = conn.getAdmin();
-		searcher = new Searcher(admin);
+		conn = ConnectionFactory.createConnection(config);
+		searcher = new Searcher(config, conn);
 	}
 
 	private void search(String line) {
@@ -82,13 +83,13 @@ public class Main {
 
 	private TableName[] getTables() throws IOException {
 		System.out.println("Retrieving Tables");
-		return admin.listTableNames();
+		return conn.getAdmin().listTableNames();
 	}
 
 	public void exit() {
 		System.out.println("Exiting");
 		try {
-			admin.getConnection().close();
+			conn.getAdmin().getConnection().close();
 			System.exit(0);
 		} catch (IOException e) {
 			System.out.println("Error attempting to close connection");
