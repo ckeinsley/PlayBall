@@ -34,7 +34,7 @@ public class Main {
 				in.close();
 				exit();
 			} else if (line.startsWith("search")) {
-				searcher.search(line.contains("-n"), line);
+				search(line);
 			} else if (debug && line.startsWith("show tables")) {
 				printTables();
 			}
@@ -61,6 +61,14 @@ public class Main {
 		Connection conn = ConnectionFactory.createConnection(config);
 		admin = conn.getAdmin();
 		searcher = new Searcher(admin);
+	}
+
+	private void search(String line) {
+		try {
+			searcher.search(line.contains("-n"), line);
+		} catch (MismatchedArgsException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private void printTables() {
