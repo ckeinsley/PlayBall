@@ -36,9 +36,12 @@ public class Searcher {
 		try {
 			String[] tokens = line.split("\\s+");
 			parseFields(tokens);
+			if (checkYear()) {
+				System.out.println("Please search a year: -year <Year>");
+				return;
+			}
 			System.out.println(this);
-			lookupTeam();
-			practiceSearch();
+			performSearch();
 		} catch (ArrayIndexOutOfBoundsException e) {
 			throw new MismatchedArgsException("Wrong number of arguments for the specified fields");
 		} catch (IOException e) {
@@ -83,24 +86,39 @@ public class Searcher {
 		}
 	}
 
-	private void lookupTeam() {
-
+	private boolean checkYear() {
+		if (year.equals("2015")) {
+			return true;
+		}
+		return false;
 	}
 
-	private void practiceSearch() throws IOException {
-		// Can pass in the TableName object from conn.getAdmin().listTables();
-		Table table = conn.getTable(TableName.valueOf("plays2015"));
-		Scan scanner = new Scan();
-		// scanner.addFamily(Bytes.toBytes("play_data"));
-		// scanner.addFamily(Bytes.toBytes("play_num"));
-		// scanner.addFamily(Bytes.toBytes("game"));
-		ResultScanner results = table.getScanner(scanner);
-		Iterator<Result> iter = results.iterator();
-		while (iter.hasNext()) {
-			Result r = iter.next();
-			System.out.println(Bytes.toString(r.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("batterCount"))));
+	private void performSearch() throws IOException {
+		if (!homeTeam.isEmpty()) {
+			Table table = conn.getTable(TableName.valueOf("teams2015"));
+			ResultScanner scanner = table.getScanner(new Scan());
+			Iterator<Result> results = scanner.iterator();
+			while (results.hasNext()) {
+				System.out.println(Bytes.toString(results.next().getRow()));
+			}
 		}
 	}
+
+	// private void practiceSearch() throws IOException {
+	// Can pass in the TableName object from conn.getAdmin().listTables();
+	// Table table = conn.getTable(TableName.valueOf("plays2015"));
+	// Scan scanner = new Scan();
+	// scanner.addFamily(Bytes.toBytes("play_data"));
+	// scanner.addFamily(Bytes.toBytes("play_num"));
+	// scanner.addFamily(Bytes.toBytes("game"));
+	// ResultScanner results = table.getScanner(scanner);
+	// Iterator<Result> iter = results.iterator();
+	// while (iter.hasNext()) {
+	// Result r = iter.next();
+	// System.out.println(Bytes.toString(r.getValue(Bytes.toBytes("play_data"),
+	// Bytes.toBytes("batterCount"))));
+	// }
+	// }
 
 	@Override
 	public String toString() {
