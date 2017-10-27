@@ -130,15 +130,14 @@ public class Searcher {
 		} else if (resultsFound.isEmpty()) {
 			System.out.println("No Results Found");
 		} else {
-			// must be 1
+			if (true) {
+				printGameResults(resultsFound);
+			}
 		}
 	}
 
 	private boolean resultMatches(String foundHomeTeam, String foundAwayTeam, String foundMonth, String foundDay,
 			String foundHour) throws IOException {
-		if (!day.isEmpty()) {
-			System.out.println(day + " " + foundDay + "\t" + day.equals(foundDay));
-		}
 		if (!homeTeam.isEmpty() && !homeTeam.equals(getTeamName(foundHomeTeam))) {
 			return false;
 		}
