@@ -2,7 +2,6 @@ package edu.rosehulman.hadoop;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.hadoop.hbase.TableName;
@@ -103,37 +102,59 @@ public class Searcher {
 	}
 
 	private void performSearch() throws IOException {
-		String homeTeamID;
-		String awayTeamID;
-		if (!homeTeam.isEmpty() && !awayTeam.isEmpty()) {
-			try {
-				homeTeamID = getTeamID(homeTeam);
-				awayTeamID = getTeamID(awayTeam);
-				searchGamesWithBothTeamIDs(homeTeamID, awayTeamID);
-			} catch (MismatchedArgsException e) {
-				System.out.println(e.getMessage());
-				return;
-			}
-		}
+		searchGamesWithBothTeamIDs();
+		// String homeTeamID;
+		// String awayTeamID;
+		// if(homeTeam.isEmpty() && awayTeam.isEmpty()){
+		//
+		// }
+		// if (!homeTeam.isEmpty() && !awayTeam.isEmpty()) {
+		// try {
+		// homeTeamID = getTeamID(homeTeam);
+		// awayTeamID = getTeamID(awayTeam);
+		// searchGamesWithBothTeamIDs(homeTeamID, awayTeamID);
+		// } catch (MismatchedArgsException e) {
+		// System.out.println(e.getMessage());
+		// return;
+		// }
+		// } else if (!awayTeam.isEmpty() && homeTeam.isEmpty()) {
+		// try {
+		// awayTeamID = getTeamID(awayTeam);
+		// searchGamesWithAwayTeam(awayTeamID);
+		// } catch (MismatchedArgsException e) {
+		// System.out.println(e.getMessage());
+		// return;
+		// }
+		// } else if (!homeTeam.isEmpty()) {
+		// try {
+		// homeTeamID = getTeamID(homeTeam);
+		// searchGamesWithHomeTeam(homeTeamID);
+		// } catch (MismatchedArgsException e) {
+		// System.out.println(e.getMessage());
+		// return;
+		// }
+		// } else {
+		// System.out.println("Please enter at least one Team");
+		// }
 	}
 
-	private String getTeamID(String teamName) throws IOException {
-		Table table = conn.getTable(TableName.valueOf("teams" + year));
-		ResultScanner scanner = table.getScanner(new Scan());
-		Iterator<Result> results = scanner.iterator();
-		Result result = null;
-		String foundTeam = null;
-		while (results.hasNext()) {
-			result = results.next();
-			foundTeam = Bytes.toString(result.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
-			if (teamName.equals(foundTeam)) {
-				return Bytes.toString(result.getRow());
-			}
-		}
-		throw new MismatchedArgsException("Team: " + teamName + " not found");
-	}
+//	private String getTeamID(String teamName) throws IOException {
+//		Table table = conn.getTable(TableName.valueOf("teams" + year));
+//		ResultScanner scanner = table.getScanner(new Scan());
+//		Iterator<Result> results = scanner.iterator();
+//		Result result = null;
+//		String foundTeam = null;
+//		while (results.hasNext()) {
+//			result = results.next();
+//			foundTeam = Bytes.toString(result.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
+//			if (teamName.equals(foundTeam)) {
+//				return Bytes.toString(result.getRow());
+//			}
+//		}
+//		throw new MismatchedArgsException("Team: " + teamName + " not found");
+//	}
 
-	private void searchGamesWithBothTeamIDs(String home, String away) throws IOException {
+	private void searchGamesWithBothTeamIDs() throws IOException {
 		Table table = conn.getTable(TableName.valueOf("games" + year));
 		Scan scan = new Scan();
 		ResultScanner scanner = table.getScanner(scan);
@@ -161,7 +182,6 @@ public class Searcher {
 		} else {
 			// must be 1
 		}
-
 	}
 
 	private boolean resultMatches(String foundHomeTeam, String foundAwayTeam, String foundMonth, String foundDay,
