@@ -61,7 +61,7 @@ public class Main {
 
 		System.out.println("Creating Connection");
 		conn = ConnectionFactory.createConnection(config);
-		searcher = new Searcher(config, conn);
+		searcher = new Searcher(conn);
 	}
 
 	private void search(String line) {

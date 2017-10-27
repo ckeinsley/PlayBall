@@ -3,7 +3,6 @@ package edu.rosehulman.hadoop;
 import java.io.IOException;
 import java.util.Iterator;
 
-import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.Result;
@@ -14,7 +13,6 @@ import org.apache.hadoop.hbase.util.Bytes;
 
 public class Searcher {
 
-	private Configuration config;
 	private Connection conn;
 	private String homeTeam;
 	private String awayTeam;
@@ -23,10 +21,9 @@ public class Searcher {
 	private String day;
 	private String startTime;
 
-	public Searcher(Configuration configuration, Connection connection) {
+	public Searcher(Connection connection) {
 		resetFields();
 		conn = connection;
-		config = configuration;
 	}
 
 	public void search(boolean newSearch, String line) {
@@ -36,7 +33,7 @@ public class Searcher {
 		try {
 			String[] tokens = line.split("\\s+");
 			parseFields(tokens);
-			if (checkYear()) {
+			if (!isYearValid()) {
 				System.out.println("Please search a year: -year <Year>");
 				return;
 			}
@@ -86,39 +83,44 @@ public class Searcher {
 		}
 	}
 
-	private boolean checkYear() {
-		if (year.equals("2015")) {
-			return true;
+	private boolean isYearValid() throws IOException {
+		TableName[] tables = conn.getAdmin().listTableNames();
+		for (int i = 0; i < tables.length; i++) {
+			if (tables[i].toString().contains(year)) {
+				return true;
+			}
 		}
 		return false;
 	}
 
 	private void performSearch() throws IOException {
+		String homeTeamID;
 		if (!homeTeam.isEmpty()) {
-			Table table = conn.getTable(TableName.valueOf("teams2015"));
-			ResultScanner scanner = table.getScanner(new Scan());
-			Iterator<Result> results = scanner.iterator();
-			while (results.hasNext()) {
-				System.out.println(Bytes.toString(results.next().getRow()));
+			try {
+				homeTeamID = getHomeTeamID();
+				System.out.println(homeTeamID);
+			} catch (MismatchedArgsException e) {
+				System.out.println(e.getMessage());
+				return;
 			}
 		}
 	}
 
-	// private void practiceSearch() throws IOException {
-	// Can pass in the TableName object from conn.getAdmin().listTables();
-	// Table table = conn.getTable(TableName.valueOf("plays2015"));
-	// Scan scanner = new Scan();
-	// scanner.addFamily(Bytes.toBytes("play_data"));
-	// scanner.addFamily(Bytes.toBytes("play_num"));
-	// scanner.addFamily(Bytes.toBytes("game"));
-	// ResultScanner results = table.getScanner(scanner);
-	// Iterator<Result> iter = results.iterator();
-	// while (iter.hasNext()) {
-	// Result r = iter.next();
-	// System.out.println(Bytes.toString(r.getValue(Bytes.toBytes("play_data"),
-	// Bytes.toBytes("batterCount"))));
-	// }
-	// }
+	private String getHomeTeamID() throws IOException {
+		Table table = conn.getTable(TableName.valueOf("teams2015"));
+		ResultScanner scanner = table.getScanner(new Scan());
+		Iterator<Result> results = scanner.iterator();
+		Result result = null;
+		String foundTeam = null;
+		while (results.hasNext()) {
+			result = results.next();
+			foundTeam = Bytes.toString(result.getValue(Bytes.toBytes("FAMILY"), Bytes.toBytes("COLUMN")));
+			if (homeTeam.equals(foundTeam)) {
+				return Bytes.toString(result.getRow());
+			}
+		}
+		throw new MismatchedArgsException("Team: " + homeTeam + " not found");
+	}
 
 	@Override
 	public String toString() {
