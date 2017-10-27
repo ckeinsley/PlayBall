@@ -109,8 +109,6 @@ public class Searcher {
 			try {
 				homeTeamID = getTeamID(homeTeam);
 				awayTeamID = getTeamID(awayTeam);
-				System.out.println("FOUND homeTeamID " + homeTeamID);
-				System.out.println("FOUND awayTeamID " + awayTeamID);
 				searchGamesWithBothTeamIDs(homeTeamID, awayTeamID);
 			} catch (MismatchedArgsException e) {
 				System.out.println(e.getMessage());
@@ -152,8 +150,8 @@ public class Searcher {
 			foundMonth = Bytes.toString(result.getValue(Bytes.toBytes("date_time"), Bytes.toBytes("month")));
 			foundDay = Bytes.toString(result.getValue(Bytes.toBytes("date_time"), Bytes.toBytes("day")));
 			foundHour = Bytes.toString(result.getValue(Bytes.toBytes("date_time"), Bytes.toBytes("time")));
+			printGameResult(result);
 			if (resultMatches(foundHomeTeam, foundAwayTeam, foundMonth, foundDay, foundHour)) {
-				System.out.println(result);
 				resultsFound.add(result);
 			}
 		}
@@ -169,6 +167,8 @@ public class Searcher {
 
 	private boolean resultMatches(String foundHomeTeam, String foundAwayTeam, String foundMonth, String foundDay,
 			String foundHour) {
+		System.out.println("Home " + homeTeam + " found " + foundHomeTeam);
+		System.out.println("Away " + awayTeam + " found " + foundAwayTeam);
 		if (!homeTeam.isEmpty() && !homeTeam.equals(foundHomeTeam)) {
 			return false;
 		}
