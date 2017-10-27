@@ -97,7 +97,7 @@ public class Searcher {
 		String homeTeamID;
 		if (!homeTeam.isEmpty()) {
 			try {
-				homeTeamID = getHomeTeamID();
+				homeTeamID = getTeamID(homeTeam);
 				System.out.println(homeTeamID);
 			} catch (MismatchedArgsException e) {
 				System.out.println(e.getMessage());
@@ -106,7 +106,7 @@ public class Searcher {
 		}
 	}
 
-	private String getHomeTeamID() throws IOException {
+	private String getTeamID(String teamName) throws IOException {
 		Table table = conn.getTable(TableName.valueOf("teams2015"));
 		ResultScanner scanner = table.getScanner(new Scan());
 		Iterator<Result> results = scanner.iterator();
@@ -114,7 +114,7 @@ public class Searcher {
 		String foundTeam = null;
 		while (results.hasNext()) {
 			result = results.next();
-			foundTeam = Bytes.toString(result.getValue(Bytes.toBytes("FAMILY"), Bytes.toBytes("COLUMN")));
+			foundTeam = Bytes.toString(result.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
 			if (homeTeam.equals(foundTeam)) {
 				return Bytes.toString(result.getRow());
 			}
