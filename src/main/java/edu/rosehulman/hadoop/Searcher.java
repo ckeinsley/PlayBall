@@ -19,8 +19,8 @@ public class Searcher {
 	private String homeTeam;
 	private String awayTeam;
 	private String year;
-	private String month;
-	private String day;
+	private int month;
+	private int day;
 	private String startTime;
 
 	public Searcher(Connection connection) {
@@ -59,8 +59,8 @@ public class Searcher {
 		homeTeam = "";
 		awayTeam = "";
 		year = "";
-		day = "";
-		month = "";
+		day = 0;
+		month = 0;
 		startTime = "";
 	}
 
@@ -77,10 +77,10 @@ public class Searcher {
 				year = tokens[i + 1];
 				break;
 			case ("-day"):
-				day = tokens[i + 1];
+				day = Integer.parseInt(tokens[i + 1]);
 				break;
 			case ("-month"):
-				month = tokens[i + 1];
+				month = Integer.parseInt(tokens[i + 1]);
 				break;
 			case ("-startTime"):
 				startTime = tokens[i + 1];
@@ -138,21 +138,22 @@ public class Searcher {
 		// }
 	}
 
-//	private String getTeamID(String teamName) throws IOException {
-//		Table table = conn.getTable(TableName.valueOf("teams" + year));
-//		ResultScanner scanner = table.getScanner(new Scan());
-//		Iterator<Result> results = scanner.iterator();
-//		Result result = null;
-//		String foundTeam = null;
-//		while (results.hasNext()) {
-//			result = results.next();
-//			foundTeam = Bytes.toString(result.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
-//			if (teamName.equals(foundTeam)) {
-//				return Bytes.toString(result.getRow());
-//			}
-//		}
-//		throw new MismatchedArgsException("Team: " + teamName + " not found");
-//	}
+	// private String getTeamID(String teamName) throws IOException {
+	// Table table = conn.getTable(TableName.valueOf("teams" + year));
+	// ResultScanner scanner = table.getScanner(new Scan());
+	// Iterator<Result> results = scanner.iterator();
+	// Result result = null;
+	// String foundTeam = null;
+	// while (results.hasNext()) {
+	// result = results.next();
+	// foundTeam = Bytes.toString(result.getValue(Bytes.toBytes("teams_data"),
+	// Bytes.toBytes("name")));
+	// if (teamName.equals(foundTeam)) {
+	// return Bytes.toString(result.getRow());
+	// }
+	// }
+	// throw new MismatchedArgsException("Team: " + teamName + " not found");
+	// }
 
 	private void searchGamesWithBothTeamIDs() throws IOException {
 		Table table = conn.getTable(TableName.valueOf("games" + year));
@@ -160,16 +161,16 @@ public class Searcher {
 		ResultScanner scanner = table.getScanner(scan);
 		String foundHomeTeam = null;
 		String foundAwayTeam = null;
-		String foundMonth = null;
-		String foundDay = null;
+		int foundMonth;
+		int foundDay;
 		String foundHour = null;
 		List<Result> resultsFound = new ArrayList<Result>();
 		System.out.println("Searching Games With Both Team IDs");
 		for (Result result : scanner) {
 			foundHomeTeam = Bytes.toString(result.getValue(Bytes.toBytes("team_data"), Bytes.toBytes("home_team")));
 			foundAwayTeam = Bytes.toString(result.getValue(Bytes.toBytes("team_data"), Bytes.toBytes("away_team")));
-			foundMonth = Bytes.toString(result.getValue(Bytes.toBytes("date_time"), Bytes.toBytes("month")));
-			foundDay = Bytes.toString(result.getValue(Bytes.toBytes("date_time"), Bytes.toBytes("day")));
+			foundMonth = Bytes.toInt(result.getValue(Bytes.toBytes("date_time"), Bytes.toBytes("month")));
+			foundDay = Bytes.toInt(result.getValue(Bytes.toBytes("date_time"), Bytes.toBytes("day")));
 			foundHour = Bytes.toString(result.getValue(Bytes.toBytes("date_time"), Bytes.toBytes("time")));
 			if (resultMatches(foundHomeTeam, foundAwayTeam, foundMonth, foundDay, foundHour)) {
 				resultsFound.add(result);
@@ -184,18 +185,19 @@ public class Searcher {
 		}
 	}
 
-	private boolean resultMatches(String foundHomeTeam, String foundAwayTeam, String foundMonth, String foundDay,
+	private boolean resultMatches(String foundHomeTeam, String foundAwayTeam, int foundMonth, int foundDay,
 			String foundHour) throws IOException {
+		System.out.println(day + " " + foundDay);
 		if (!homeTeam.isEmpty() && !homeTeam.equals(getTeamName(foundHomeTeam))) {
 			return false;
 		}
 		if (!awayTeam.isEmpty() && !awayTeam.equals(getTeamName(foundAwayTeam))) {
 			return false;
 		}
-		if (!day.isEmpty() && !day.equals(foundDay)) {
+		if (day != 0 && day != foundDay) {
 			return false;
 		}
-		if (!month.isEmpty() && !month.equals(foundMonth)) {
+		if (month != 0 && month != foundMonth) {
 			return false;
 		}
 		if (compareHourToStartTime(foundHour)) {
