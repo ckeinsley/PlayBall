@@ -128,7 +128,7 @@ public class Searcher {
 		while (results.hasNext()) {
 			result = results.next();
 			foundTeam = Bytes.toString(result.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
-			if (homeTeam.equals(foundTeam)) {
+			if (teamName.equals(foundTeam)) {
 				return Bytes.toString(result.getRow());
 			}
 		}
