@@ -101,7 +101,7 @@ public class Main {
 	}
 
 	private void printHelp() {
-		System.out.println("Search [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-plays] [-startTime hour]");
+		System.out.println("Search [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-startTime hour] [-plays]");
 	}
 
 	public static void main(String[] args) {
