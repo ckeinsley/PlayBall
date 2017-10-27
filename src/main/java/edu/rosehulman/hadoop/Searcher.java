@@ -31,20 +31,26 @@ public class Searcher {
 			resetFields();
 		}
 		try {
-			String[] tokens = line.split("\\s+");
-			parseFields(tokens);
-			if (!isYearValid()) {
-				System.out.println("Please search a year: -year <Year>");
-				return;
-			}
-			System.out.println(this);
-			performSearch();
+			search(line);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			throw new MismatchedArgsException("Wrong number of arguments for the specified fields");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Failed when looking up " + this);
 		}
+	}
+
+	private void search(String line) throws IOException {
+		String[] tokens = line.split("\\s+");
+		parseFields(tokens);
+		if (!isYearValid()) {
+			System.out.println("Please search a valid year");
+			return;
+		}
+		if (Main.debug) {
+			System.out.println(this);
+		}
+		performSearch();
 	}
 
 	private void resetFields() {

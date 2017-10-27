@@ -17,7 +17,7 @@ public class Main {
 
 	private Connection conn;
 	private Configuration config;
-	private boolean debug;
+	public static boolean debug;
 	private Searcher searcher;
 
 	public Main(boolean debugMode) {
@@ -37,6 +37,8 @@ public class Main {
 				search(line);
 			} else if (debug && line.startsWith("show tables")) {
 				printTables();
+			} else if (line.startsWith("help")) {
+				printHelp();
 			} else {
 				System.out.println("Unrecognized command: " + line);
 			}
@@ -64,6 +66,18 @@ public class Main {
 		searcher = new Searcher(conn);
 	}
 
+	public void exit() {
+		System.out.println("Exiting");
+		try {
+			conn.getAdmin().getConnection().close();
+			System.exit(0);
+		} catch (IOException e) {
+			System.out.println("Error attempting to close connection");
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+
 	private void search(String line) {
 		try {
 			searcher.search(line.contains("-n"), line);
@@ -86,16 +100,8 @@ public class Main {
 		return conn.getAdmin().listTableNames();
 	}
 
-	public void exit() {
-		System.out.println("Exiting");
-		try {
-			conn.getAdmin().getConnection().close();
-			System.exit(0);
-		} catch (IOException e) {
-			System.out.println("Error attempting to close connection");
-			e.printStackTrace();
-			System.exit(1);
-		}
+	private void printHelp() {
+		System.out.println("Search [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-plays] [-startTime hour]");
 	}
 
 	public static void main(String[] args) {
