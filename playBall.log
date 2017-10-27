@@ -718,3 +718,62 @@ DEBUG 2017-10-27 07:53:27,834 Assuming keytab is managed externally since logged
 DEBUG 2017-10-27 07:53:27,836 UGI loginUser:keinslc (auth:SIMPLE)
 INFO  2017-10-27 07:53:28,864 Process identifier=hconnection-0x75881071 connecting to ZooKeeper ensemble=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
 		:2181
+DEBUG 2017-10-27 13:34:30,362 Failed to detect a valid hadoop home directory
+java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:60)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:51)
+	at edu.rosehulman.hadoop.Main.run(Main.java:28)
+	at edu.rosehulman.hadoop.Main.main(Main.java:116)
+WARN  2017-10-27 13:34:30,386 Did not find winutils.exe: java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+DEBUG 2017-10-27 13:34:30,386 Failed to find winutils.exe
+java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset. -see https://wiki.apache.org/hadoop/WindowsProblems
+	at org.apache.hadoop.util.Shell.fileNotFoundException(Shell.java:528)
+	at org.apache.hadoop.util.Shell.getHadoopHomeDir(Shell.java:549)
+	at org.apache.hadoop.util.Shell.getQualifiedBin(Shell.java:572)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:669)
+	at org.apache.hadoop.util.StringUtils.<clinit>(StringUtils.java:79)
+	at org.apache.hadoop.conf.Configuration.getBoolean(Configuration.java:1445)
+	at org.apache.hadoop.hbase.HBaseConfiguration.checkDefaultsVersion(HBaseConfiguration.java:68)
+	at org.apache.hadoop.hbase.HBaseConfiguration.addHbaseResources(HBaseConfiguration.java:82)
+	at org.apache.hadoop.hbase.HBaseConfiguration.create(HBaseConfiguration.java:97)
+	at edu.rosehulman.hadoop.Main.connect(Main.java:60)
+	at edu.rosehulman.hadoop.Main.attemptConnection(Main.java:51)
+	at edu.rosehulman.hadoop.Main.run(Main.java:28)
+	at edu.rosehulman.hadoop.Main.main(Main.java:116)
+Caused by: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	at org.apache.hadoop.util.Shell.checkHadoopHomeInner(Shell.java:448)
+	at org.apache.hadoop.util.Shell.checkHadoopHome(Shell.java:419)
+	at org.apache.hadoop.util.Shell.<clinit>(Shell.java:496)
+	... 9 more
+DEBUG 2017-10-27 13:34:30,933 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginSuccess with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Rate of successful kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-27 13:34:30,971 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.loginFailure with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Rate of failed kerberos logins and latency (milliseconds)], valueName=Time)
+DEBUG 2017-10-27 13:34:30,972 field org.apache.hadoop.metrics2.lib.MutableRate org.apache.hadoop.security.UserGroupInformation$UgiMetrics.getGroups with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[GetGroups], valueName=Time)
+DEBUG 2017-10-27 13:34:30,973 field private org.apache.hadoop.metrics2.lib.MutableGaugeLong org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailuresTotal with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Renewal failures since startup], valueName=Time)
+DEBUG 2017-10-27 13:34:30,974 field private org.apache.hadoop.metrics2.lib.MutableGaugeInt org.apache.hadoop.security.UserGroupInformation$UgiMetrics.renewalFailures with annotation @org.apache.hadoop.metrics2.annotation.Metric(always=false, about=, sampleName=Ops, type=DEFAULT, value=[Renewal failures since last successful login], valueName=Time)
+DEBUG 2017-10-27 13:34:30,977 UgiMetrics, User and group related metrics
+DEBUG 2017-10-27 13:34:31,429 Kerberos krb5 configuration not found, setting default realm to empty
+DEBUG 2017-10-27 13:34:31,441  Creating new Groups object
+DEBUG 2017-10-27 13:34:31,447 Trying to load the custom-built native-hadoop library...
+DEBUG 2017-10-27 13:34:31,461 Failed to load native-hadoop with error: java.lang.UnsatisfiedLinkError: no hadoop in java.library.path
+DEBUG 2017-10-27 13:34:31,461 java.library.path=C:\Program Files\Java\jdk1.8.0_131\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_152/bin/server;C:/Program Files/Java/jre1.8.0_152/bin;C:/Program Files/Java/jre1.8.0_152/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Chez Scheme Version 8.4\bin\i3nt;C:\Python35\Scripts\;C:\Python35\;C:\Program Files\VanDyke Software\Clients\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\TortoiseSVN\bin;C:\MinGW\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\nodejs\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Ruby23\bin;C:\Users\keinslc\AppData\Local\Microsoft\WindowsApps;C:\Users\keinslc\AppData\Local\Programs\Git\cmd;C:\Users\keinslc\AppData\Roaming\npm;C:\Users\keinslc\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Program Files\Eclipse;;.
+WARN  2017-10-27 13:34:31,461 Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+DEBUG 2017-10-27 13:34:31,463 Falling back to shell based
+DEBUG 2017-10-27 13:34:31,465 Group mapping impl=org.apache.hadoop.security.ShellBasedUnixGroupsMapping
+DEBUG 2017-10-27 13:34:31,555 Group mapping impl=org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback; cacheTimeout=300000; warningDeltaMs=5000
+DEBUG 2017-10-27 13:34:31,568 hadoop login
+DEBUG 2017-10-27 13:34:31,571 hadoop login commit
+DEBUG 2017-10-27 13:34:31,589 using local user:NTUserPrincipal: keinslc
+DEBUG 2017-10-27 13:34:31,589 Using user: "NTUserPrincipal: keinslc" with name keinslc
+DEBUG 2017-10-27 13:34:31,590 User entry: "keinslc"
+DEBUG 2017-10-27 13:34:31,590 Assuming keytab is managed externally since logged in from subject.
+DEBUG 2017-10-27 13:34:31,592 UGI loginUser:keinslc (auth:SIMPLE)
+INFO  2017-10-27 13:34:32,438 Process identifier=hconnection-0x75881071 connecting to ZooKeeper ensemble=10.128.0.5:2181,10.128.0.4:2181,10.128.0.3
+		:2181
