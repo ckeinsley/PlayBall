@@ -166,13 +166,11 @@ public class Searcher {
 	}
 
 	private boolean resultMatches(String foundHomeTeam, String foundAwayTeam, String foundMonth, String foundDay,
-			String foundHour) {
-		System.out.println("Home " + homeTeam + " found " + foundHomeTeam);
-		System.out.println("Away " + awayTeam + " found " + foundAwayTeam);
-		if (!homeTeam.isEmpty() && !homeTeam.equals(foundHomeTeam)) {
+			String foundHour) throws IOException {
+		if (!homeTeam.isEmpty() && !homeTeam.equals(getTeamName(foundHomeTeam))) {
 			return false;
 		}
-		if (!awayTeam.isEmpty() && !awayTeam.equals(foundAwayTeam)) {
+		if (!awayTeam.isEmpty() && !awayTeam.equals(getTeamName(foundAwayTeam))) {
 			return false;
 		}
 		if (!day.isEmpty() && !day.equals(foundDay)) {
