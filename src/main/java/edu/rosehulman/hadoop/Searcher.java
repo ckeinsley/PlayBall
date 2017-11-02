@@ -257,18 +257,18 @@ public class Searcher {
 		String foundBatterCount = Bytes
 				.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("batterCount")));
 		String foundPitches = Bytes.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("pitches")));
+		String foundTeam = Bytes.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("team")));
 
 		System.out.println("Play Number " + playNum + " during Inning " + foundInning + ". Batter up: "
-				+ lookupPlayer(foundPlayerId) + "\nBatter Count: " + foundBatterCount + "\nPitches: "
-				+ translatePitches(foundPitches));
-
+				+ lookupPlayer(foundPlayerId) + " for the " + getTeamName(foundTeam) + "\nBatter Count: "
+				+ foundBatterCount + "\nPitches: " + translatePitches(foundPitches));
 	}
 
 	private String lookupPlayer(String foundPlayerId) throws IOException {
 		Table table = conn.getTable(TableName.valueOf("players" + year));
 		Get get = new Get(Bytes.toBytes(foundPlayerId));
 		Result res = table.get(get);
-		return Bytes.toString(res.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("firsname"))) + " "
+		return Bytes.toString(res.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("firstname"))) + " "
 				+ Bytes.toString(res.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("lastname")));
 	}
 
