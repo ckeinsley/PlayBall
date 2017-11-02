@@ -192,12 +192,44 @@ public class Searcher {
 		return Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
 	}
 
-	public void getNextPlay() throws IOException {
+	public void displayNextPlay() {
+		try {
+			printPlayResult(getNextPlay(), playIndex);
+			playIndex++;
+		} catch (IOException e) {
+			System.out.println("Failed to find play");
+		}
+	}
+
+	private Result getNextPlay() throws IOException {
 		System.out.println("Play id : " + playIndex + foundGameId);
 		Table table = conn.getTable(TableName.valueOf("plays" + year));
 		Get get = new Get(Bytes.toBytes(playIndex + foundGameId));
 		Result res = table.get(get);
-		System.out.println(res.toString());
+		return res;
+	}
+
+	private void printPlayResult(Result res, int playNum) throws IOException {
+		String foundInning = Bytes.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("inning")));
+		String foundPlayerId = Bytes.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("playerId")));
+		String foundBatterCount = Bytes
+				.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("batterCount")));
+		String foundPitches = Bytes.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("pitches")));
+		String foundEvents = Bytes.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("event")));
+
+		System.out.println("Play Number " + playNum + " during Inning " + foundInning + ". Batter up: "
+				+ lookupPlayer(foundPlayerId) + "\nBatter Count: " + foundBatterCount + "\nPitches: " + foundPitches
+				+ "\nEvent: " + foundEvents);
+
+	}
+
+	private String lookupPlayer(String foundPlayerId) throws IOException {
+		System.out.println("Play id : " + playIndex + foundGameId);
+		Table table = conn.getTable(TableName.valueOf("plays" + year));
+		Get get = new Get(Bytes.toBytes(playIndex + foundGameId));
+		Result res = table.get(get);
+		return Bytes.toString(res.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("firsname"))) + " "
+				+ Bytes.toString(res.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("lastname")));
 	}
 
 	@Override

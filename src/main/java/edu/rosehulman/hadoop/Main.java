@@ -35,6 +35,8 @@ public class Main {
 				exit();
 			} else if (line.startsWith("search")) {
 				search(line);
+			} else if (line.startsWith("play")) {
+				searcher.displayNextPlay();
 			} else if (debug && line.startsWith("show tables")) {
 				printTables();
 			} else if (line.startsWith("help")) {
@@ -101,7 +103,8 @@ public class Main {
 	}
 
 	private void printHelp() {
-		System.out.println("Search [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-startTime hour] [-plays]");
+		System.out.println(
+				"Search [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-startTime hour] [-plays]");
 	}
 
 	public static void main(String[] args) {
