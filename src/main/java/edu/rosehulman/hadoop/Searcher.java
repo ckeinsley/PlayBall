@@ -22,6 +22,8 @@ public class Searcher {
 	private String month;
 	private String day;
 	private String startTime;
+	private String foundGameId;
+	private int playIndex;
 
 	public Searcher(Connection connection) {
 		resetFields();
@@ -62,6 +64,8 @@ public class Searcher {
 		day = "";
 		month = "";
 		startTime = "";
+		foundGameId = "";
+		playIndex = 1;
 	}
 
 	private void parseFields(String[] tokens) {
@@ -130,9 +134,9 @@ public class Searcher {
 		} else if (resultsFound.isEmpty()) {
 			System.out.println("No Results Found");
 		} else {
-			if (true) {
-				printGameResults(resultsFound);
-			}
+			System.out.println("Found exactly 1 game");
+			printGameResults(resultsFound);
+			foundGameId = Bytes.toString(resultsFound.get(0).getRow());
 		}
 	}
 
@@ -186,6 +190,14 @@ public class Searcher {
 		Get get = new Get(Bytes.toBytes(teamCode));
 		Result res = table.get(get);
 		return Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
+	}
+
+	public void getNextPlay() throws IOException {
+		System.out.println("Play id : " + playIndex + foundGameId);
+		Table table = conn.getTable(TableName.valueOf("plays" + year));
+		Get get = new Get(Bytes.toBytes(playIndex + foundGameId));
+		Result res = table.get(get);
+		System.out.println(res.toString());
 	}
 
 	@Override
