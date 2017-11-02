@@ -59,7 +59,7 @@ public class Main {
 		System.out.println("Constructing Config");
 		config = HBaseConfiguration.create();
 		config.addResource("hbase-site.xml");
-		config.set("zookeeper.znode.parent", "/hbase-unsecure");
+//		config.set("zookeeper.znode.parent", "/hbase-unsecure");
 
 		System.out.println("Creating Connection");
 		conn = ConnectionFactory.createConnection(config);
