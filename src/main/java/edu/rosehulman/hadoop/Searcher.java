@@ -233,6 +233,9 @@ public class Searcher {
 
 	public void displayNextPlay() {
 		try {
+			if (foundGameId.isEmpty()) {
+				System.out.println("Please narrow search to one game");
+			}
 			printPlayResult(getNextPlay(), playIndex);
 			playIndex++;
 		} catch (IOException e) {
@@ -263,7 +266,7 @@ public class Searcher {
 
 	private String lookupPlayer(String foundPlayerId) throws IOException {
 		Table table = conn.getTable(TableName.valueOf("players" + year));
-		Get get = new Get(Bytes.toBytes(playIndex + foundGameId));
+		Get get = new Get(Bytes.toBytes(foundPlayerId));
 		Result res = table.get(get);
 		return Bytes.toString(res.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("firsname"))) + " "
 				+ Bytes.toString(res.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("lastname")));
