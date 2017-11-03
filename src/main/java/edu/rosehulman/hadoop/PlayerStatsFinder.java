@@ -105,25 +105,31 @@ public class PlayerStatsFinder {
 
 	private void performSearch() throws IOException {
 		Table table = conn.getTable(TableName.valueOf("players" + year));
-		FilterList filter = new FilterList(Operator.MUST_PASS_ONE);
-
+		FilterList filter = new FilterList(Operator.MUST_PASS_ALL);
+		Scan scan = new Scan();
+		boolean needFilter = false;
 		if (!fName.isEmpty()) {
 			SingleColumnValueFilter firstnameFilter = new SingleColumnValueFilter(Bytes.toBytes("players_data"),
 					Bytes.toBytes("firstname"), CompareOp.EQUAL, new SubstringComparator(fName));
 			filter.addFilter(firstnameFilter);
+			needFilter = true;
 		}
 		if (!lName.isEmpty()) {
 			SingleColumnValueFilter lastnameFilter = new SingleColumnValueFilter(Bytes.toBytes("players_data"),
 					Bytes.toBytes("lastname"), CompareOp.EQUAL, new SubstringComparator(lName));
 			filter.addFilter(lastnameFilter);
+			needFilter = true;
 		}
 		if (!teamName.isEmpty()) {
 			SingleColumnValueFilter teamFilter = new SingleColumnValueFilter(Bytes.toBytes("players_data"),
 					Bytes.toBytes("teamId"), CompareOp.EQUAL, new SubstringComparator(getTeamId(lName)));
 			filter.addFilter(teamFilter);
+			needFilter = true;
 		}
-		Scan scan = new Scan();
-		scan.setFilter(filter);
+		if (needFilter) {
+			scan.setFilter(filter);
+		}
+
 		ResultScanner scanner = table.getScanner(scan);
 		Iterator<Result> iter = scanner.iterator();
 		if (iter.hasNext()) {
