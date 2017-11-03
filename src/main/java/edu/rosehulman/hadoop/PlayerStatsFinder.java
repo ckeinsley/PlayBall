@@ -96,7 +96,7 @@ public class PlayerStatsFinder {
 	}
 
 	private void performSearch() throws IOException {
-		Table table = conn.getTable(TableName.valueOf("games" + year));
+		Table table = conn.getTable(TableName.valueOf("playersStats" + year));
 		Scan scan = new Scan();
 		ResultScanner scanner = table.getScanner(scan);
 		String foundFirstName = null;
@@ -166,4 +166,9 @@ public class PlayerStatsFinder {
 				+ Bytes.toString(res.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("lastname")));
 	}
 
+	@Override
+	public String toString() {
+		return "PlayerStatsFinder [conn=" + conn + ", fName=" + fName + ", lName=" + lName + ", teamName=" + teamName
+				+ ", year=" + year + "]";
+	}
 }
