@@ -99,7 +99,7 @@ public class PlayerStatsFinder {
 	}
 
 	private void performSearch() throws IOException {
-		Table table = conn.getTable(TableName.valueOf("playersStats" + year));
+		Table table = conn.getTable(TableName.valueOf("players" + year));
 		Scan scan = new Scan();
 		ResultScanner scanner = table.getScanner(scan);
 		String foundFirstName = null;
@@ -107,9 +107,9 @@ public class PlayerStatsFinder {
 		String foundTeamID = null;
 		List<Result> resultsFound = new ArrayList<Result>();
 		for (Result result : scanner) {
-			foundFirstName = Bytes.toString(result.getValue(Bytes.toBytes("team_data"), Bytes.toBytes("home_team")));
-			foundLastName = Bytes.toString(result.getValue(Bytes.toBytes("team_data"), Bytes.toBytes("away_team")));
-			foundTeamID = Bytes.toString(result.getValue(Bytes.toBytes("date_time"), Bytes.toBytes("month")));
+			foundFirstName = Bytes.toString(result.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("firstname")));
+			foundLastName = Bytes.toString(result.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("lastname")));
+			foundTeamID = Bytes.toString(result.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("teamId")));
 			if (resultMatches(foundFirstName, foundLastName, foundTeamID)) {
 				resultsFound.add(result);
 			}
@@ -141,9 +141,14 @@ public class PlayerStatsFinder {
 		return Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
 	}
 
-	private void printPlayerStats(List<Result> results) throws IOException {
-		for (Result res : results) {
-			printPlayerStats(res);
+	private void printPlayerStats(List<Result> playersFoundResults) throws IOException {
+		Table table = conn.getTable(TableName.valueOf("playersStats" + year));
+		Get get = null;
+		Result statsResult = null;
+		for (Result res : playersFoundResults) {
+			get = new Get(res.getRow());
+			statsResult = table.get(get);
+			printPlayerStats(statsResult);
 		}
 	}
 

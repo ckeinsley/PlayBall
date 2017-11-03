@@ -119,10 +119,13 @@ public class Main {
 	private void printHelp() {
 		System.out.println(
 				"Search [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-startTime hour] [-plays] "
-						+ "\n\t \"Used to search through games. Returns all matching games. Must have a year to search.\"");
+						+ "\n\t \"Used to search through games. Returns all games matching all provided fields. Must have a year to search.\"");
+		System.out.println("\n\n\n");
 		System.out.println("Play \"Shows each play in a game once a single game has been found by using Search\"");
+		System.out.println("\n\n\n");
 		System.out.println(
-				"PlayerStats [-year year] [-team teamName] [-firstName PlayerFirstName] [-lastName PlayerLastName] \"Displays Player batting stats for the given year for matching players\"");
+				"PlayerStats [-year year] [-team teamName] [-firstName PlayerFirstName] [-lastName PlayerLastName] \"Displays Player batting stats for the given year for players matching all of the provided fields\"");
+		System.out.println("\n\n\n");
 	}
 
 	public static void main(String[] args) {
