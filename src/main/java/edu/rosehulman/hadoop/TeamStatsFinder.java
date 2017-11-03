@@ -151,7 +151,7 @@ public class TeamStatsFinder {
 		while (iter.hasNext()) {
 			res = iter.next();
 			System.out.println(Bytes.toString(res.getRow()));
-			get = new Get(res.getRow());
+			get = new Get(Bytes.toBytes(Bytes.toString(res.getRow())));
 			statsResult = table.get(get);
 			System.out.println(statsResult.getRow());
 			if (!statsResult.isEmpty()) {
