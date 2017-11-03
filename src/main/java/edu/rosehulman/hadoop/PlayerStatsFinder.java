@@ -149,7 +149,9 @@ public class PlayerStatsFinder {
 		for (Result res : playersFoundResults) {
 			get = new Get(res.getRow());
 			statsResult = table.get(get);
-			printPlayerStats(statsResult);
+			if (!statsResult.isEmpty()) {
+				printPlayerStats(statsResult);
+			}
 		}
 	}
 
