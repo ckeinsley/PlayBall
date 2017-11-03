@@ -154,7 +154,6 @@ public class TeamStatsFinder {
 			actualThingIHaveToLookUp = "\"" + Bytes.toString(res.getRow()) + "\"";
 			get = new Get(Bytes.toBytes(actualThingIHaveToLookUp));
 			statsResult = table.get(get);
-			System.out.println(statsResult.getRow());
 			if (!statsResult.isEmpty()) {
 				printTeamStats(statsResult);
 			}
