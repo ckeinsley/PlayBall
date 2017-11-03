@@ -163,12 +163,12 @@ public class TeamStatsFinder {
 		String name = teamNameAndDivision[0];
 		String division = teamNameAndDivision[1];
 
-		String runs = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("AB")));
-		String gamesPlayed = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avg")));
-		String wins = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("hits")));
-		String loses = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("singles")));
-		String avgTime = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("doubles")));
-		String avgAttendance = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("triples")));
+		String runs = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("runs")));
+		String gamesPlayed = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("games")));
+		String wins = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("wins")));
+		String loses = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("loses")));
+		String avgTime = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avgTime")));
+		String avgAttendance = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avgAttendance")));
 
 		System.out.println("Team: " + name + "in Division: " + translateDivision(division) + "\n\tPlayed " + gamesPlayed
 				+ " games" + "\n\twith an average game time of " + Integer.parseInt(avgTime)
