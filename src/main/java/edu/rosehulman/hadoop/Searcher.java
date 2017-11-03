@@ -240,6 +240,8 @@ public class Searcher {
 			playIndex++;
 		} catch (IOException e) {
 			System.out.println("Failed to find play");
+		} catch (NullPointerException e) {
+			System.out.println("Play");
 		}
 	}
 
@@ -248,10 +250,8 @@ public class Searcher {
 		Table table = conn.getTable(TableName.valueOf("plays" + year));
 		Get get = new Get(Bytes.toBytes(playIndex + foundGameId));
 		Result res = table.get(get);
-		if (res == null) {
-			System.out.println("End of Game");
-		}
 		return res;
+
 	}
 
 	private void printPlayResult(Result res, int playNum) throws IOException {
@@ -281,7 +281,7 @@ public class Searcher {
 		String[] tokens = pitches.split("(?!^)");
 		StringBuilder builder = new StringBuilder();
 		for (String token : tokens) {
-			if (token == null) {
+			if (token.equals("null")) {
 				builder.append("Pitch not found");
 				continue;
 			}
