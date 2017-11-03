@@ -86,6 +86,9 @@ public class PlayerStatsFinder {
 	}
 
 	private boolean isYearValid() throws IOException {
+		if (year.isEmpty()) {
+			return false;
+		}
 		TableName[] tables = conn.getAdmin().listTableNames();
 		for (int i = 0; i < tables.length; i++) {
 			if (tables[i].toString().contains(year)) {
