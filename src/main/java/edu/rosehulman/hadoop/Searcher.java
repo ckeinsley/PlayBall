@@ -241,12 +241,11 @@ public class Searcher {
 		} catch (IOException e) {
 			System.out.println("Failed to find play");
 		} catch (NullPointerException e) {
-			System.out.println("Play");
+			System.out.println("End of Game");
 		}
 	}
 
 	private Result getNextPlay() throws IOException {
-		System.out.println("Play id : " + playIndex + foundGameId);
 		Table table = conn.getTable(TableName.valueOf("plays" + year));
 		Get get = new Get(Bytes.toBytes(playIndex + foundGameId));
 		Result res = table.get(get);
@@ -281,11 +280,11 @@ public class Searcher {
 		String[] tokens = pitches.split("(?!^)");
 		StringBuilder builder = new StringBuilder();
 		for (String token : tokens) {
-			if (token.equals("null")) {
-				builder.append("Pitch not found");
+			builder.append("\n\t");
+			if (pitchLookup.get(token).equals("null")) {
+				builder.append("Pitch Data Not Found");
 				continue;
 			}
-			builder.append("\n\t");
 			builder.append(pitchLookup.get(token));
 		}
 		builder.append("\n");
