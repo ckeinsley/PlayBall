@@ -190,7 +190,9 @@ public class TeamStatsFinder {
 	}
 
 	private String translateDivision(String divCode) {
-		System.out.println(divCode + " div");
+		if (divCode == null) {
+			return "Info Not Present";
+		}
 		if (divCode.equals("A")) {
 			return "American League";
 		}
