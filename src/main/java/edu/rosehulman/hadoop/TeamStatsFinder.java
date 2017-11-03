@@ -162,9 +162,10 @@ public class TeamStatsFinder {
 	}
 
 	private void printTeamStats(Result res) throws IOException {
-		String[] teamNameAndDivision = getTeamNameAndDivision(Bytes.toString(res.getRow()).replaceAll("\"", ""));
-		String name = teamNameAndDivision[0];
-		String division = teamNameAndDivision[1];
+		String[] teamInformation = getTeamInformation(Bytes.toString(res.getRow()).replaceAll("\"", ""));
+		String name = teamInformation[0];
+		String division = teamInformation[1];
+		String city = teamInformation[2];
 
 		String runs = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("runs")));
 		String gamesPlayed = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("games")));
@@ -173,19 +174,20 @@ public class TeamStatsFinder {
 		String avgTime = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avgTime")));
 		String avgAttendance = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avgAttendance")));
 
-		System.out.println("Team: " + name + " in the " + translateDivision(division) + "\n\tPlayed " + gamesPlayed
-				+ " games" + "\n\twith an average game time of " + (int) Double.parseDouble(avgTime)
+		System.out.println("Team: " + city + " " + name + " in the " + translateDivision(division) + "\n\tPlayed "
+				+ gamesPlayed + " games" + "\n\twith an average game time of " + (int) Double.parseDouble(avgTime)
 				+ " minutes\n\tand an average attendance of " + (int) Double.parseDouble(avgAttendance) + " people"
 				+ "\n\tWins: " + wins + "\n\tloses: " + loses + "\n\truns earned: " + runs);
 	}
 
-	private String[] getTeamNameAndDivision(String teamCode) throws IOException {
+	private String[] getTeamInformation(String teamCode) throws IOException {
 		Table table = conn.getTable(TableName.valueOf("teams" + year));
 		Get get = new Get(Bytes.toBytes(teamCode));
 		Result res = table.get(get);
 		String[] output = new String[2];
 		output[0] = Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
 		output[1] = Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("division")));
+		output[2] = Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("city")));
 		return output;
 	}
 
