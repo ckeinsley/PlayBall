@@ -171,8 +171,8 @@ public class TeamStatsFinder {
 		String avgAttendance = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avgAttendance")));
 
 		System.out.println("Team: " + name + "in Division: " + translateDivision(division) + "\n\tPlayed " + gamesPlayed
-				+ " games" + "\n\twith an average game time of " + Integer.parseInt(avgTime)
-				+ " minutes\n\tand an average attendance of " + Integer.parseInt(avgAttendance) + " people"
+				+ " games" + "\n\twith an average game time of " + (int) Double.parseDouble(avgTime)
+				+ " minutes\n\tand an average attendance of " + (int) Double.parseDouble(avgAttendance) + " people"
 				+ "\n\tWins: " + wins + "\n\tloses: " + loses + "\n\truns earned: " + runs);
 	}
 
