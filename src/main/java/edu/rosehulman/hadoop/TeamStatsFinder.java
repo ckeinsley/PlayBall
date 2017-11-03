@@ -184,7 +184,7 @@ public class TeamStatsFinder {
 		Table table = conn.getTable(TableName.valueOf("teams" + year));
 		Get get = new Get(Bytes.toBytes(teamCode));
 		Result res = table.get(get);
-		String[] output = new String[2];
+		String[] output = new String[3];
 		output[0] = Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
 		output[1] = Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("division")));
 		output[2] = Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("city")));

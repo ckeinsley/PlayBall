@@ -132,8 +132,8 @@ public class Main {
 
 	private void printHelp() {
 		System.out.println("\n--------------HELP FOR PLAYBALL------------------");
-		System.out.println("\n\nThe -year tag must be used if available\n\n");
-		System.out.println("\n\n-n is used to reset search parameters\n\n");
+		System.out.println("\n\nThe -year tag must be used if available");
+		System.out.println("\n-n is used to reset search parameters\n\n");
 		System.out.println(
 				"Search [-n] [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-startTime hour] [-plays] "
 						+ "\n  \"Used to search through games. Returns all games matching all provided fields.\"");
