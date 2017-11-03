@@ -168,6 +168,7 @@ public class PlayerStatsFinder {
 	}
 
 	private String lookupPlayer(String foundPlayerId) throws IOException {
+		System.out.println("Player found : " + foundPlayerId);
 		Table table = conn.getTable(TableName.valueOf("players" + year));
 		Get get = new Get(Bytes.toBytes(foundPlayerId));
 		Result res = table.get(get);
