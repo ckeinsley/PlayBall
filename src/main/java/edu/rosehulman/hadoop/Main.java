@@ -131,7 +131,8 @@ public class Main {
 	}
 
 	private void printHelp() {
-		System.out.println("\n\nThe -year tag must be used if available");
+		System.out.println("\n--------------HELP FOR PLAYBALL------------------");
+		System.out.println("\n\nThe -year tag must be used if available\n\n");
 		System.out.println(
 				"Search [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-startTime hour] [-plays] "
 						+ "\n  \"Used to search through games. Returns all games matching all provided fields.\"");
@@ -142,10 +143,12 @@ public class Main {
 				"PlayerStats [-year year] [-team teamName] [-firstName PlayerFirstName] [-lastName PlayerLastName]"
 						+ " \n  \"Displays Player batting stats for the given year for players matching all of the provided fields\"");
 		System.out.println("\n\n");
-		System.out.println("TeamStats [-year year] [-team teamName] [-division division]"
+		System.out.println("TeamStats [-year year] [-team teamName] [-division division] [-city citName]"
+				+ "\n  For Division please enter either A for American League or N for National League"
 				+ "\n  \"Returns team stats for all teams in the given year whose team name contains the given team name and "
 				+ "\n  matches the given division");
 		System.out.println("\n\n");
+		System.out.println("-------------------------------------------------");
 	}
 
 	public static void main(String[] args) {

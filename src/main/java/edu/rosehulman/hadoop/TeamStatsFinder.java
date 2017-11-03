@@ -19,8 +19,8 @@ import org.apache.hadoop.hbase.util.Bytes;
 
 public class TeamStatsFinder {
 	private Connection conn;
-	private String fName;
-	private String lName;
+	private String cityName;
+	private String division;
 	private String teamName;
 	private String year;
 
@@ -30,8 +30,8 @@ public class TeamStatsFinder {
 	}
 
 	private void resetFields() {
-		fName = "";
-		lName = "";
+		cityName = "";
+		division = "";
 		teamName = "";
 		year = "";
 	}
@@ -66,7 +66,7 @@ public class TeamStatsFinder {
 	private void parseFields(String[] tokens) {
 		for (int i = 0; i < tokens.length; i++) {
 			switch (tokens[i]) {
-			case ("-teamName"):
+			case ("-team"):
 				teamName = tokens[i + 1];
 				if (i + 2 < tokens.length) {
 					if (!tokens[i + 2].contains("-")) {
@@ -77,11 +77,16 @@ public class TeamStatsFinder {
 			case ("-year"):
 				year = tokens[i + 1];
 				break;
-			case ("-firstName"):
-				fName = tokens[i + 1];
+			case ("-city"):
+				cityName = tokens[i + 1];
+				if (i + 2 < tokens.length) {
+					if (!tokens[i + 2].contains("-")) {
+						cityName += " " + tokens[i + 2];
+					}
+				}
 				break;
-			case ("-lastName"):
-				lName = tokens[i + 1];
+			case ("-division"):
+				division = tokens[i + 1];
 				break;
 			default:
 				break;
@@ -103,25 +108,25 @@ public class TeamStatsFinder {
 	}
 
 	private void performSearch() throws IOException {
-		Table table = conn.getTable(TableName.valueOf("players" + year));
+		Table table = conn.getTable(TableName.valueOf("teams" + year));
 		FilterList filter = new FilterList(Operator.MUST_PASS_ALL);
 		Scan scan = new Scan();
 		boolean needFilter = false;
-		if (!fName.isEmpty()) {
-			SingleColumnValueFilter firstnameFilter = new SingleColumnValueFilter(Bytes.toBytes("players_data"),
-					Bytes.toBytes("firstname"), CompareOp.EQUAL, new SubstringComparator(fName));
+		if (!cityName.isEmpty()) {
+			SingleColumnValueFilter firstnameFilter = new SingleColumnValueFilter(Bytes.toBytes("teams_data"),
+					Bytes.toBytes("city"), CompareOp.EQUAL, new SubstringComparator(cityName));
 			filter.addFilter(firstnameFilter);
 			needFilter = true;
 		}
-		if (!lName.isEmpty()) {
-			SingleColumnValueFilter lastnameFilter = new SingleColumnValueFilter(Bytes.toBytes("players_data"),
-					Bytes.toBytes("lastname"), CompareOp.EQUAL, new SubstringComparator(lName));
+		if (!division.isEmpty()) {
+			SingleColumnValueFilter lastnameFilter = new SingleColumnValueFilter(Bytes.toBytes("teams_data"),
+					Bytes.toBytes("division"), CompareOp.EQUAL, new SubstringComparator(division));
 			filter.addFilter(lastnameFilter);
 			needFilter = true;
 		}
 		if (!teamName.isEmpty()) {
-			SingleColumnValueFilter teamFilter = new SingleColumnValueFilter(Bytes.toBytes("players_data"),
-					Bytes.toBytes("teamId"), CompareOp.EQUAL, new SubstringComparator(getTeamId(lName)));
+			SingleColumnValueFilter teamFilter = new SingleColumnValueFilter(Bytes.toBytes("teams_data"),
+					Bytes.toBytes("name"), CompareOp.EQUAL, new SubstringComparator(teamName));
 			filter.addFilter(teamFilter);
 			needFilter = true;
 		}
@@ -132,31 +137,14 @@ public class TeamStatsFinder {
 		ResultScanner scanner = table.getScanner(scan);
 		Iterator<Result> iter = scanner.iterator();
 		if (iter.hasNext()) {
-			printPlayerStats(iter);
+			printTeamStats(iter);
 		} else {
 			System.out.println("No Results Found");
 		}
 	}
 
-	private String getTeamId(String teamName) throws IOException {
-		Table table = conn.getTable(TableName.valueOf("teams" + year));
-		FilterList filter = new FilterList(Operator.MUST_PASS_ONE);
-		SingleColumnValueFilter teamNameFilter = new SingleColumnValueFilter(Bytes.toBytes("teams_data"),
-				Bytes.toBytes("name"), CompareOp.EQUAL, new SubstringComparator(teamName));
-		filter.addFilter(teamNameFilter);
-		Scan scan = new Scan();
-		scan.setFilter(filter);
-		ResultScanner results = table.getScanner(scan);
-		Result res = results.next();
-		if (res == null) {
-			System.out.println("Unknown Team Name: " + teamName);
-			throw new IOException();
-		}
-		return Bytes.toString(res.getRow());
-	}
-
-	private void printPlayerStats(Iterator<Result> iter) throws IOException {
-		Table table = conn.getTable(TableName.valueOf("playersStats" + year));
+	private void printTeamStats(Iterator<Result> iter) throws IOException {
+		Table table = conn.getTable(TableName.valueOf("teamstats" + year));
 		Get get = null;
 		Result statsResult = null;
 		Result res = null;
@@ -165,31 +153,41 @@ public class TeamStatsFinder {
 			get = new Get(res.getRow());
 			statsResult = table.get(get);
 			if (!statsResult.isEmpty()) {
-				printPlayerStats(statsResult);
+				printTeamStats(statsResult);
 			}
 		}
 	}
 
-	private void printPlayerStats(Result res) throws IOException {
-		String name = lookupPlayer(Bytes.toString(res.getRow()));
-		String atBats = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("AB")));
-		String average = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avg")));
-		String hits = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("hits")));
-		String singles = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("singles")));
-		String doubles = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("doubles")));
-		String triples = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("triples")));
-		String homeRuns = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("hrs")));
-		System.out.println("Player: " + name + "\n\tAt Bats: " + atBats + "\n\tBatting Average: " + average
-				+ "\n\tHits: " + hits + "\n\tSingles: " + singles + "\n\tDoubles: " + doubles + "\n\tTriples: "
-				+ triples + "\n\tHome Runs: " + homeRuns);
+	private void printTeamStats(Result res) throws IOException {
+		String[] teamNameAndDivision = getTeamNameAndDivision(Bytes.toString(res.getRow()));
+		String name = teamNameAndDivision[0];
+		String division = teamNameAndDivision[1];
+
+		String runs = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("AB")));
+		String gamesPlayed = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avg")));
+		String wins = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("hits")));
+		String loses = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("singles")));
+		String avgTime = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("doubles")));
+		String avgAttendance = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("triples")));
+
+		System.out.println("Team: " + name + "in Division: " + translateDivision(division) + "\n\tPlayed " + gamesPlayed
+				+ " games" + "\n\twith an average game time of " + Integer.parseInt(avgTime)
+				+ " minutes\n\tand an average attendance of " + Integer.parseInt(avgAttendance) + " people"
+				+ "\n\tWins: " + wins + "\n\tloses: " + loses + "\n\truns earned: " + runs);
 	}
 
-	private String lookupPlayer(String foundPlayerId) throws IOException {
-		Table table = conn.getTable(TableName.valueOf("players" + year));
-		Get get = new Get(Bytes.toBytes(foundPlayerId));
+	private String[] getTeamNameAndDivision(String teamCode) throws IOException {
+		Table table = conn.getTable(TableName.valueOf("teams" + year));
+		Get get = new Get(Bytes.toBytes(teamCode));
 		Result res = table.get(get);
-		return Bytes.toString(res.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("firstname"))) + " "
-				+ Bytes.toString(res.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("lastname")));
+		String[] output = new String[2];
+		output[0] = Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
+		output[1] = Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("division")));
+		return output;
+	}
+
+	private String translateDivision(String divCode) {
+		return divCode;
 	}
 
 }
