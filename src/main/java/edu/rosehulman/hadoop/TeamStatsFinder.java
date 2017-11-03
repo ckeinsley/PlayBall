@@ -152,6 +152,7 @@ public class TeamStatsFinder {
 			res = iter.next();
 			get = new Get(res.getRow());
 			statsResult = table.get(get);
+			System.out.println(statsResult.getRow());
 			if (!statsResult.isEmpty()) {
 				printTeamStats(statsResult);
 			}
@@ -190,4 +191,8 @@ public class TeamStatsFinder {
 		return divCode;
 	}
 
+	public String toString() {
+		return "TeamStatsFinder [cityName=" + cityName + ", division=" + division + ", teamName=" + teamName + ", year="
+				+ year + "]";
+	}
 }
