@@ -150,7 +150,7 @@ public class TeamStatsFinder {
 		Result res = null;
 		while (iter.hasNext()) {
 			res = iter.next();
-			System.out.println(res);
+			System.out.println(res.getRow());
 			get = new Get(res.getRow());
 			statsResult = table.get(get);
 			System.out.println(statsResult.getRow());
@@ -172,7 +172,7 @@ public class TeamStatsFinder {
 		String avgTime = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avgTime")));
 		String avgAttendance = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avgAttendance")));
 
-		System.out.println("Team: " + name + "in Division: " + translateDivision(division) + "\n\tPlayed " + gamesPlayed
+		System.out.println("Team: " + name + "in the " + translateDivision(division) + "\n\tPlayed " + gamesPlayed
 				+ " games" + "\n\twith an average game time of " + (int) Double.parseDouble(avgTime)
 				+ " minutes\n\tand an average attendance of " + (int) Double.parseDouble(avgAttendance) + " people"
 				+ "\n\tWins: " + wins + "\n\tloses: " + loses + "\n\truns earned: " + runs);
@@ -189,7 +189,10 @@ public class TeamStatsFinder {
 	}
 
 	private String translateDivision(String divCode) {
-		return divCode;
+		if (divCode.equals("A")) {
+			return "American League";
+		}
+		return "National League";
 	}
 
 	public String toString() {
