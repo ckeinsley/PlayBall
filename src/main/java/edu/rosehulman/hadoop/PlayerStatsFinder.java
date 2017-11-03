@@ -73,6 +73,7 @@ public class PlayerStatsFinder {
 				break;
 			case ("-year"):
 				year = tokens[i + 1];
+				break;
 			case ("-firstName"):
 				fName = tokens[i + 1];
 				break;
