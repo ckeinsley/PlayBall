@@ -281,7 +281,7 @@ public class Searcher {
 		StringBuilder builder = new StringBuilder();
 		for (String token : tokens) {
 			builder.append("\n\t");
-			if (pitchLookup.get(token).equals("null")) {
+			if (pitchLookup.get(token) == null) {
 				builder.append("Pitch Data Not Found");
 				continue;
 			}
