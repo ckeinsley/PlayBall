@@ -67,7 +67,6 @@ public class Searcher {
 		pitchLookup.put("V", "Called ball, because pitcher went to his mouth");
 		pitchLookup.put("X", "Ball put into play by batter");
 		pitchLookup.put("Y", "Ball put into play on pitchout");
-
 	}
 
 	public void search(boolean newSearch, String line) {

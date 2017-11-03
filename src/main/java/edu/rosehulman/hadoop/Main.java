@@ -19,6 +19,7 @@ public class Main {
 	private Configuration config;
 	public static boolean debug;
 	private Searcher searcher;
+	private PlayerStatsFinder playerStats;
 
 	public Main(boolean debugMode) {
 		debug = debugMode;
@@ -39,6 +40,10 @@ public class Main {
 				searcher.displayNextPlay();
 			} else if (debug && line.startsWith("show tables")) {
 				printTables();
+			} else if (line.startsWith("PlayerStats")) {
+				searchPlayerStats(line);
+			} else if (line.startsWith("Player Stats")) {
+				searchPlayerStats(line);
 			} else if (line.startsWith("help")) {
 				printHelp();
 			} else {
@@ -66,6 +71,7 @@ public class Main {
 		System.out.println("Creating Connection");
 		conn = ConnectionFactory.createConnection(config);
 		searcher = new Searcher(conn);
+		playerStats = new PlayerStatsFinder(conn);
 	}
 
 	public void exit() {
@@ -88,6 +94,14 @@ public class Main {
 		}
 	}
 
+	private void searchPlayerStats(String line) {
+		try {
+			playerStats.search(line.contains("-n"), line);
+		} catch (MismatchedArgsException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	private void printTables() {
 		try {
 			TableName[] tables = getTables();
@@ -104,7 +118,11 @@ public class Main {
 
 	private void printHelp() {
 		System.out.println(
-				"Search [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-startTime hour] [-plays]");
+				"Search [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-startTime hour] [-plays] "
+						+ "\n\t \"Used to search through games. Returns all matching games. Must have a year to search.\"");
+		System.out.println("Play \"Shows each play in a game once a single game has been found by using Search\"");
+		System.out.println(
+				"PlayerStats [-year year] [-team teamName] [-firstName PlayerFirstName] [-lastName PlayerLastName] \"Displays Player batting stats for the given year for matching players\"");
 	}
 
 	public static void main(String[] args) {
