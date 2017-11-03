@@ -154,7 +154,7 @@ public class TeamStatsFinder {
 			actualThingIHaveToLookUp = "\"" + Bytes.toString(res.getRow()) + "\"";
 			get = new Get(Bytes.toBytes(actualThingIHaveToLookUp));
 			statsResult = table.get(get);
-			System.out.println(statsResult.getRow());
+
 			if (!statsResult.isEmpty()) {
 				printTeamStats(statsResult);
 			}
@@ -164,7 +164,7 @@ public class TeamStatsFinder {
 	private void printTeamStats(Result res) throws IOException {
 		String[] teamNameAndDivision = getTeamNameAndDivision(Bytes.toString(res.getRow()));
 		String name = teamNameAndDivision[0];
-		String division = teamNameAndDivision[1];
+		// String division = teamNameAndDivision[1];
 
 		String runs = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("runs")));
 		String gamesPlayed = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("games")));
@@ -172,9 +172,9 @@ public class TeamStatsFinder {
 		String loses = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("loses")));
 		String avgTime = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avgTime")));
 		String avgAttendance = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avgAttendance")));
-
-		System.out.println("Team: " + name + "in the " + translateDivision(division) + "\n\tPlayed " + gamesPlayed
-				+ " games" + "\n\twith an average game time of " + (int) Double.parseDouble(avgTime)
+		// in the " + translateDivision(division)
+		System.out.println("Team: " + name + "\n\tPlayed " + gamesPlayed + " games"
+				+ "\n\twith an average game time of " + (int) Double.parseDouble(avgTime)
 				+ " minutes\n\tand an average attendance of " + (int) Double.parseDouble(avgAttendance) + " people"
 				+ "\n\tWins: " + wins + "\n\tloses: " + loses + "\n\truns earned: " + runs);
 	}
@@ -189,15 +189,15 @@ public class TeamStatsFinder {
 		return output;
 	}
 
-	private String translateDivision(String divCode) {
-		if (divCode == null) {
-			return "Info Not Present";
-		}
-		if (divCode.equals("A")) {
-			return "American League";
-		}
-		return "National League";
-	}
+	// private String translateDivision(String divCode) {
+	// if (divCode == null) {
+	// return "Info Not Present";
+	// }
+	// if (divCode.equals("A")) {
+	// return "American League";
+	// }
+	// return "National League";
+	// }
 
 	public String toString() {
 		return "TeamStatsFinder [cityName=" + cityName + ", division=" + division + ", teamName=" + teamName + ", year="
