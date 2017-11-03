@@ -1,8 +1,7 @@
 package edu.rosehulman.hadoop;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Connection;
@@ -11,6 +10,11 @@ import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.ResultScanner;
 import org.apache.hadoop.hbase.client.Scan;
 import org.apache.hadoop.hbase.client.Table;
+import org.apache.hadoop.hbase.filter.CompareFilter.CompareOp;
+import org.apache.hadoop.hbase.filter.FilterList;
+import org.apache.hadoop.hbase.filter.FilterList.Operator;
+import org.apache.hadoop.hbase.filter.SingleColumnValueFilter;
+import org.apache.hadoop.hbase.filter.SubstringComparator;
 import org.apache.hadoop.hbase.util.Bytes;
 
 public class PlayerStatsFinder {
@@ -101,52 +105,58 @@ public class PlayerStatsFinder {
 
 	private void performSearch() throws IOException {
 		Table table = conn.getTable(TableName.valueOf("players" + year));
-		Scan scan = new Scan();
-		ResultScanner scanner = table.getScanner(scan);
-		String foundFirstName = null;
-		String foundLastName = null;
-		String foundTeamID = null;
-		List<Result> resultsFound = new ArrayList<Result>();
-		for (Result result : scanner) {
-			foundFirstName = Bytes.toString(result.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("firstname")));
-			foundLastName = Bytes.toString(result.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("lastname")));
-			foundTeamID = Bytes.toString(result.getValue(Bytes.toBytes("players_data"), Bytes.toBytes("teamId")));
-			if (resultMatches(foundFirstName, foundLastName, foundTeamID)) {
-				resultsFound.add(result);
-			}
+		FilterList filter = new FilterList(Operator.MUST_PASS_ONE);
+
+		if (!fName.isEmpty()) {
+			SingleColumnValueFilter firstnameFilter = new SingleColumnValueFilter(Bytes.toBytes("players_data"),
+					Bytes.toBytes("firstname"), CompareOp.EQUAL, new SubstringComparator(fName));
+			filter.addFilter(firstnameFilter);
 		}
-		if (resultsFound.size() != 0) {
-			printPlayerStats(resultsFound);
-		} else if (resultsFound.isEmpty()) {
+		if (!lName.isEmpty()) {
+			SingleColumnValueFilter lastnameFilter = new SingleColumnValueFilter(Bytes.toBytes("players_data"),
+					Bytes.toBytes("lastname"), CompareOp.EQUAL, new SubstringComparator(lName));
+			filter.addFilter(lastnameFilter);
+		}
+		if (!teamName.isEmpty()) {
+			SingleColumnValueFilter teamFilter = new SingleColumnValueFilter(Bytes.toBytes("players_data"),
+					Bytes.toBytes("teamId"), CompareOp.EQUAL, new SubstringComparator(getTeamId(lName)));
+			filter.addFilter(teamFilter);
+		}
+		Scan scan = new Scan();
+		scan.setFilter(filter);
+		ResultScanner scanner = table.getScanner(scan);
+		Iterator<Result> iter = scanner.iterator();
+		if (iter.hasNext()) {
+			printPlayerStats(iter);
+		} else {
 			System.out.println("No Results Found");
 		}
 	}
 
-	private boolean resultMatches(String foundFirstName, String foundLastName, String foundTeamID) throws IOException {
-		if (!fName.isEmpty() && !foundFirstName.equals(fName)) {
-			return false;
-		}
-		if (!lName.isEmpty() && !foundLastName.equals(lName)) {
-			return false;
-		}
-		if (!teamName.isEmpty() && !teamName.equals(getTeamName(foundTeamID))) {
-			return false;
-		}
-		return true;
-	}
-
-	private String getTeamName(String teamCode) throws IOException {
+	private String getTeamId(String teamName) throws IOException {
 		Table table = conn.getTable(TableName.valueOf("teams" + year));
-		Get get = new Get(Bytes.toBytes(teamCode));
-		Result res = table.get(get);
-		return Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
+		FilterList filter = new FilterList(Operator.MUST_PASS_ONE);
+		SingleColumnValueFilter teamNameFilter = new SingleColumnValueFilter(Bytes.toBytes("teams_data"),
+				Bytes.toBytes("name"), CompareOp.EQUAL, new SubstringComparator(teamName));
+		filter.addFilter(teamNameFilter);
+		Scan scan = new Scan();
+		scan.setFilter(filter);
+		ResultScanner results = table.getScanner(scan);
+		Result res = results.next();
+		if (res == null) {
+			System.out.println("Unknown Team Name: " + teamName);
+			throw new IOException();
+		}
+		return Bytes.toString(res.getRow());
 	}
 
-	private void printPlayerStats(List<Result> playersFoundResults) throws IOException {
+	private void printPlayerStats(Iterator<Result> iter) throws IOException {
 		Table table = conn.getTable(TableName.valueOf("playersStats" + year));
 		Get get = null;
 		Result statsResult = null;
-		for (Result res : playersFoundResults) {
+		Result res = null;
+		while (iter.hasNext()) {
+			res = iter.next();
 			get = new Get(res.getRow());
 			statsResult = table.get(get);
 			if (!statsResult.isEmpty()) {
