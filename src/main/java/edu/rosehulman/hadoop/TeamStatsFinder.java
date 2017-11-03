@@ -150,6 +150,7 @@ public class TeamStatsFinder {
 		Result res = null;
 		while (iter.hasNext()) {
 			res = iter.next();
+			System.out.println(res);
 			get = new Get(res.getRow());
 			statsResult = table.get(get);
 			System.out.println(statsResult.getRow());
