@@ -248,6 +248,9 @@ public class Searcher {
 		Table table = conn.getTable(TableName.valueOf("plays" + year));
 		Get get = new Get(Bytes.toBytes(playIndex + foundGameId));
 		Result res = table.get(get);
+		if (res == null) {
+			System.out.println("End of Game");
+		}
 		return res;
 	}
 
@@ -257,11 +260,13 @@ public class Searcher {
 		String foundBatterCount = Bytes
 				.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("batterCount")));
 		String foundPitches = Bytes.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("pitches")));
-		String foundTeam = Bytes.toString(res.getValue(Bytes.toBytes("play_data"), Bytes.toBytes("team")));
+		// String foundTeam = Bytes.toString(res.getValue(Bytes.toBytes("play_data"),
+		// Bytes.toBytes("team")));
+		// " for the " + getTeamName(foundTeam) +
 
 		System.out.println("Play Number " + playNum + " during Inning " + foundInning + ". Batter up: "
-				+ lookupPlayer(foundPlayerId) + " for the " + getTeamName(foundTeam) + "\nBatter Count: "
-				+ foundBatterCount + "\nPitches: " + translatePitches(foundPitches));
+				+ lookupPlayer(foundPlayerId) + "\nBatter Count: " + foundBatterCount + "\nPitches: "
+				+ translatePitches(foundPitches));
 	}
 
 	private String lookupPlayer(String foundPlayerId) throws IOException {
@@ -276,6 +281,10 @@ public class Searcher {
 		String[] tokens = pitches.split("(?!^)");
 		StringBuilder builder = new StringBuilder();
 		for (String token : tokens) {
+			if (token == null) {
+				builder.append("Pitch not found");
+				continue;
+			}
 			builder.append("\n\t");
 			builder.append(pitchLookup.get(token));
 		}
