@@ -148,10 +148,11 @@ public class TeamStatsFinder {
 		Get get = null;
 		Result statsResult = null;
 		Result res = null;
+		String actualThingIHaveToLookUp = "";
 		while (iter.hasNext()) {
 			res = iter.next();
-			System.out.println(Bytes.toString(res.getRow()));
-			get = new Get(Bytes.toBytes(Bytes.toString(res.getRow())));
+			actualThingIHaveToLookUp = "\"" + Bytes.toString(res.getRow()) + "\"";
+			get = new Get(Bytes.toBytes(actualThingIHaveToLookUp));
 			statsResult = table.get(get);
 			System.out.println(statsResult.getRow());
 			if (!statsResult.isEmpty()) {
