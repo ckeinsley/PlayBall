@@ -67,7 +67,7 @@ public class PlayerStatsFinder {
 	private void parseFields(String[] tokens) {
 		for (int i = 0; i < tokens.length; i++) {
 			switch (tokens[i]) {
-			case ("-teamName"):
+			case ("-team"):
 				teamName = tokens[i + 1];
 				if (i + 2 < tokens.length) {
 					if (!tokens[i + 2].contains("-")) {

@@ -20,6 +20,7 @@ public class Main {
 	public static boolean debug;
 	private Searcher searcher;
 	private PlayerStatsFinder playerStats;
+	private TeamStatsFinder teamStats;
 
 	public Main(boolean debugMode) {
 		debug = debugMode;
@@ -44,6 +45,10 @@ public class Main {
 				searchPlayerStats(line);
 			} else if (line.startsWith("Player Stats")) {
 				searchPlayerStats(line);
+			} else if (line.startsWith("TeamStats")) {
+				searchTeamStats(line);
+			} else if (line.startsWith("Team Stats")) {
+				searchTeamStats(line);
 			} else if (line.startsWith("help")) {
 				printHelp();
 			} else {
@@ -72,6 +77,7 @@ public class Main {
 		conn = ConnectionFactory.createConnection(config);
 		searcher = new Searcher(conn);
 		playerStats = new PlayerStatsFinder(conn);
+		teamStats = new TeamStatsFinder(conn);
 	}
 
 	public void exit() {
@@ -102,6 +108,14 @@ public class Main {
 		}
 	}
 
+	private void searchTeamStats(String line) {
+		try {
+			teamStats.search(line.contains("-n"), line);
+		} catch (MismatchedArgsException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	private void printTables() {
 		try {
 			TableName[] tables = getTables();
@@ -117,15 +131,21 @@ public class Main {
 	}
 
 	private void printHelp() {
+		System.out.println("\n\nThe -year tag must be used if available");
 		System.out.println(
 				"Search [-homeTeam teamName] [-awayTeam teamName] [-year year] [-month month] [-day day] [-startTime hour] [-plays] "
-						+ "\n\t \"Used to search through games. Returns all games matching all provided fields. Must have a year to search.\"");
-		System.out.println("\n\n\n");
-		System.out.println("Play \"Shows each play in a game once a single game has been found by using Search\"");
-		System.out.println("\n\n\n");
+						+ "\n  \"Used to search through games. Returns all games matching all provided fields.\"");
+		System.out.println("\n\n");
+		System.out.println("Play \n  \"Shows each play in a game once a single game has been found by using Search\"");
+		System.out.println("\n\n");
 		System.out.println(
-				"PlayerStats [-year year] [-team teamName] [-firstName PlayerFirstName] [-lastName PlayerLastName] \"Displays Player batting stats for the given year for players matching all of the provided fields\"");
-		System.out.println("\n\n\n");
+				"PlayerStats [-year year] [-team teamName] [-firstName PlayerFirstName] [-lastName PlayerLastName]"
+						+ " \n  \"Displays Player batting stats for the given year for players matching all of the provided fields\"");
+		System.out.println("\n\n");
+		System.out.println("TeamStats [-year year] [-team teamName] [-division division]"
+				+ "\n  \"Returns team stats for all teams in the given year whose team name contains the given team name and "
+				+ "\n  matches the given division");
+		System.out.println("\n\n");
 	}
 
 	public static void main(String[] args) {
