@@ -127,7 +127,7 @@ public class PlayerStatsFinder {
 		}
 		if (!teamName.isEmpty()) {
 			SingleColumnValueFilter teamFilter = new SingleColumnValueFilter(Bytes.toBytes("players_data"),
-					Bytes.toBytes("teamId"), CompareOp.EQUAL, new SubstringComparator(getTeamId(lName)));
+					Bytes.toBytes("teamId"), CompareOp.EQUAL, new SubstringComparator(getTeamId(teamName)));
 			filter.addFilter(teamFilter);
 			needFilter = true;
 		}
