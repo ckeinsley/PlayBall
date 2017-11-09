@@ -114,10 +114,10 @@ public class TeamScheduleFinder {
 	private void printTeamSchedule(Result res) throws IOException {
 		String key = Bytes.toString(res.getRow());
 		String date = key.substring(3, key.length() - 1);
-		String opTeam = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("opposing")));
+		String opTeam = getTeamName(Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("opposing"))));
 		String score = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("score")));
 		String opScore = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("op_score")));
-		String home = getTeamName(Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("home"))));
+		String home = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("home")));
 		
 		System.out.println("-----------------------");
 		System.out.println("Date: " + date.substring(4,6) + "/" + date.substring(6) + "/" + date.substring(0,4));

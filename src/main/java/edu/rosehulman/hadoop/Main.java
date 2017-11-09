@@ -177,6 +177,7 @@ public class Main {
 				"Wind Stats [-n] [-year year] [-stat stat]"
 						+ "\n  \"Displays the given wind stat for the given year. "
 						+ "\n  Shows all years and all stats if -year and -stat is omitted respectively.\"");
+		System.out.println("\n\n");
 		System.out.println(
 				"Team Schedule [-n] [-year year] [-team teamName]"
 						+ "\n  \"Displays the schedule for the given team for the given year." 
