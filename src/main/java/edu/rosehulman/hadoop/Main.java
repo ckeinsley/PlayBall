@@ -161,6 +161,10 @@ public class Main {
 				+ "\n  \"Returns team stats for all teams in the given year whose team name contains the given team name and "
 				+ "\n  matches the given division");
 		System.out.println("\n\n");
+		System.out.println(
+				"Wind Stats [-n] [-year year] [-stat stat]"
+						+ " \n  \"Displays the given wind stat for the given year. Shows all years and all stats if -year and -stat is omitted respectively.\"");
+		System.out.println("\n\n");
 		System.out.println("-------------------------------------------------");
 	}
 

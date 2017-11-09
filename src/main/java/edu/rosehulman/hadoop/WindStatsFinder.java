@@ -1,6 +1,8 @@
 package edu.rosehulman.hadoop;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Connection;
@@ -8,6 +10,8 @@ import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.client.ResultScanner;
+import org.apache.hadoop.hbase.client.Scan;
 
 public class WindStatsFinder {
 
@@ -45,7 +49,11 @@ public class WindStatsFinder {
 		if (Main.debug) {
 			System.out.println(this);
 		}
-		performSearch();
+		if (year.isEmpty()) {
+			performAllYearsSearch();
+		} else {
+			performSearch();
+		}
 	}
 
 	private void parseFields(String[] tokens) {
@@ -62,9 +70,33 @@ public class WindStatsFinder {
 			}
 		}
 	}
+	
+	private void performAllYearsSearch() throws IOException {
+		Table table = conn.getTable(TableName.valueOf("windstats"));
+		Scan scan = new Scan();
+		ResultScanner scanner = table.getScanner(scan);
+		for (Result result: scanner) {
+			if (stat.isEmpty()) {
+				String year = Bytes.toString(result.getRow());
+				String mode = Bytes.toString(result.getValue(Bytes.toBytes("stats"), Bytes.toBytes("mode")));
+				String avg = Bytes.toString(result.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avg")));
+				String min = Bytes.toString(result.getValue(Bytes.toBytes("stats"), Bytes.toBytes("min")));
+				String max = Bytes.toString(result.getValue(Bytes.toBytes("stats"), Bytes.toBytes("max")));
+				System.out.println("Wind stats for " + year + ":"
+						+ "\nMax wind speed " + max
+						+ "\nMin wind speed " + min
+						+ "\nAverage wind speed " + avg
+						+ "\nMode wind speed " + mode);
+			} else {
+				String year = Bytes.toString(result.getRow());
+				String thestat = Bytes.toString(result.getValue(Bytes.toBytes("stats"), Bytes.toBytes(stat)));
+				System.out.println(stat + " wind speed for " + year + " is " + thestat);
+			}
+		}
+	}
 
 	private void performSearch() throws IOException {
-		Table table = conn.getTable(TableName.valueOf("winds"));
+		Table table = conn.getTable(TableName.valueOf("windstats"));
 		Get get = new Get(Bytes.toBytes(year));
 		Result res = table.get(get);
 		if (stat.isEmpty()) {
