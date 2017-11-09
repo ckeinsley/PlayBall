@@ -175,7 +175,14 @@ public class Main {
 		System.out.println("\n\n");
 		System.out.println(
 				"Wind Stats [-n] [-year year] [-stat stat]"
-						+ " \n  \"Displays the given wind stat for the given year. Shows all years and all stats if -year and -stat is omitted respectively.\"");
+						+ "\n  \"Displays the given wind stat for the given year. "
+						+ "\n  Shows all years and all stats if -year and -stat is omitted respectively.\"");
+		System.out.println("\n\n");
+		System.out.println(
+				"Team Schedule [-n] [-year year] [-team teamName]"
+						+ "\n  \"Displays the schedule for the given team for the given year." 
+						+ "\n  Schedules are in order by date."
+						+ "\n  Schedules show the team played, the score, and whether it was a home or away game\"");
 		System.out.println("\n\n");
 		System.out.println("-------------------------------------------------");
 	}
