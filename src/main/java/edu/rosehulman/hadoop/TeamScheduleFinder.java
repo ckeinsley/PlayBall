@@ -103,6 +103,13 @@ public class TeamScheduleFinder {
 		}
 		return Bytes.toString(res.getRow());
 	}
+	
+	private String getTeamName(String teamCode) throws IOException {
+		Table table = conn.getTable(TableName.valueOf("teams" + year));
+		Get get = new Get(Bytes.toBytes(teamCode));
+		Result res = table.get(get);
+		return Bytes.toString(res.getValue(Bytes.toBytes("teams_data"), Bytes.toBytes("name")));
+	}
 
 	private void printTeamSchedule(Result res) throws IOException {
 		String key = Bytes.toString(res.getRow());
@@ -110,7 +117,7 @@ public class TeamScheduleFinder {
 		String opTeam = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("opposing")));
 		String score = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("score")));
 		String opScore = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("op_score")));
-		String home = getTeamId(Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("home"))));
+		String home = getTeamName(Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("home"))));
 		
 		System.out.println("-----------------------");
 		System.out.println("Date: " + date.substring(4,6) + "/" + date.substring(6) + "/" + date.substring(0,4));
