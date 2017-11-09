@@ -82,36 +82,41 @@ public class WindStatsFinder {
 				String avg = Bytes.toString(result.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avg")));
 				String min = Bytes.toString(result.getValue(Bytes.toBytes("stats"), Bytes.toBytes("min")));
 				String max = Bytes.toString(result.getValue(Bytes.toBytes("stats"), Bytes.toBytes("max")));
+				System.out.println("- - - - - - - - - - - - - - - - - - - ");
 				System.out.println("Wind stats for " + year + ":"
-						+ "\nMax wind speed " + max
-						+ "\nMin wind speed " + min
-						+ "\nAverage wind speed " + avg
-						+ "\nMode wind speed " + mode);
+						+ "\n  Max wind speed " + max
+						+ "\n  Min wind speed " + min
+						+ "\n  Average wind speed " + avg
+						+ "\n  Mode wind speed " + mode);
 			} else {
 				String year = Bytes.toString(result.getRow());
 				String thestat = Bytes.toString(result.getValue(Bytes.toBytes("stats"), Bytes.toBytes(stat)));
+				System.out.println("- - - - - - - - - - - - - - - - - - - ");
 				System.out.println(stat + " wind speed for " + year + " is " + thestat);
 			}
 		}
+		System.out.println("- - - - - - - - - - - - - - - - - - - ");
 	}
 
 	private void performSearch() throws IOException {
 		Table table = conn.getTable(TableName.valueOf("windstats"));
 		Get get = new Get(Bytes.toBytes(year));
 		Result res = table.get(get);
+		System.out.println("- - - - - - - - - - - - - - - - - - - ");
 		if (stat.isEmpty()) {
 			String mode = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("mode")));
 			String avg = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("avg")));
 			String min = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("min")));
 			String max = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("max")));
 			System.out.println("Wind stats for " + year + ":"
-					+ "\nMax wind speed " + max
-					+ "\nMin wind speed " + min
-					+ "\nAverage wind speed " + avg
-					+ "\nMode wind speed " + mode);
+					+ "\n  Max wind speed " + max
+					+ "\n  Min wind speed " + min
+					+ "\n  Average wind speed " + avg
+					+ "\n  Mode wind speed " + mode);
 		} else {
 			String thestat = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes(stat)));
 			System.out.println(stat + " wind speed for " + year + " is " + thestat);
 		}
+		System.out.println("- - - - - - - - - - - - - - - - - - - ");
 	}
 }
