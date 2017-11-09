@@ -24,6 +24,7 @@ public class PlayerStatsFinder {
 	private String lName;
 	private String teamName;
 	private String year;
+	private boolean career;
 
 	public PlayerStatsFinder(Connection connection) {
 		resetFields();
@@ -35,6 +36,7 @@ public class PlayerStatsFinder {
 		lName = "";
 		teamName = "";
 		year = "";
+		career = false;
 	}
 
 	public void search(boolean newSearch, String line) {
@@ -54,7 +56,7 @@ public class PlayerStatsFinder {
 	private void search(String line) throws IOException {
 		String[] tokens = line.split("\\s+");
 		parseFields(tokens);
-		if (!isYearValid()) {
+		if (!isYearValid() && !career) {
 			System.out.println("Please search a valid year");
 			return;
 		}
@@ -83,6 +85,9 @@ public class PlayerStatsFinder {
 				break;
 			case ("-lastName"):
 				lName = tokens[i + 1];
+				break;
+			case ("-career"):
+				career = true;
 				break;
 			default:
 				break;
@@ -157,7 +162,12 @@ public class PlayerStatsFinder {
 	}
 
 	private void printPlayerStats(Iterator<Result> iter) throws IOException {
-		Table table = conn.getTable(TableName.valueOf("playersStats" + year));
+		Table table;
+		if (career) {
+			table = conn.getTable(TableName.valueOf("playersCareerStats"));
+		} else {
+			table = conn.getTable(TableName.valueOf("playersStats" + year));
+		}
 		Get get = null;
 		Result statsResult = null;
 		Result res = null;
@@ -180,9 +190,15 @@ public class PlayerStatsFinder {
 		String doubles = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("doubles")));
 		String triples = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("triples")));
 		String homeRuns = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("hrs")));
-		System.out.println("Player: " + name + "\n\tAt Bats: " + atBats + "\n\tBatting Average: " + average
+		String printer = "Player: " + name + "\n\tAt Bats: " + atBats + "\n\tBatting Average: " + average
 				+ "\n\tHits: " + hits + "\n\tSingles: " + singles + "\n\tDoubles: " + doubles + "\n\tTriples: "
-				+ triples + "\n\tHome Runs: " + homeRuns);
+				+ triples + "\n\tHome Runs: " + homeRuns;
+		if (career) {
+			String yearStart = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("yearStart")));
+			String yearEnd = Bytes.toString(res.getValue(Bytes.toBytes("stats"), Bytes.toBytes("yearEnd")));
+			printer += "\n\tPlayed from " + yearStart + " to " + yearEnd;
+		}
+		System.out.println(printer);
 	}
 
 	private String lookupPlayer(String foundPlayerId) throws IOException {
