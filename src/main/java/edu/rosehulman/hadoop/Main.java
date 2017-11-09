@@ -21,6 +21,7 @@ public class Main {
 	private Searcher searcher;
 	private PlayerStatsFinder playerStats;
 	private TeamStatsFinder teamStats;
+	private WindStatsFinder windStats;
 
 	public Main(boolean debugMode) {
 		debug = debugMode;
@@ -49,6 +50,8 @@ public class Main {
 				searchTeamStats(line);
 			} else if (line.startsWith("Team Stats")) {
 				searchTeamStats(line);
+			} else if (line.startsWith("Wind Stats")) {
+				searchWindStats(line);
 			} else if (line.startsWith("help")) {
 				printHelp();
 			} else {
@@ -78,6 +81,7 @@ public class Main {
 		searcher = new Searcher(conn);
 		playerStats = new PlayerStatsFinder(conn);
 		teamStats = new TeamStatsFinder(conn);
+		windStats = new WindStatsFinder(conn);
 	}
 
 	public void exit() {
@@ -89,6 +93,14 @@ public class Main {
 			System.out.println("Error attempting to close connection");
 			e.printStackTrace();
 			System.exit(1);
+		}
+	}
+
+	private void searchWindStats(String line) {
+		try {
+			windStats.search(line.contains("-n"), line);
+		} catch (MismatchedArgsException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
