@@ -22,6 +22,7 @@ public class Main {
 	private PlayerStatsFinder playerStats;
 	private TeamStatsFinder teamStats;
 	private WindStatsFinder windStats;
+	private TeamScheduleFinder teamSched;
 
 	public Main(boolean debugMode) {
 		debug = debugMode;
@@ -52,6 +53,8 @@ public class Main {
 				searchTeamStats(line);
 			} else if (line.startsWith("Wind Stats")) {
 				searchWindStats(line);
+			} else if (line.startsWith("Team Schedule")) {
+				searchTeamSchedule(line);
 			} else if (line.startsWith("help")) {
 				printHelp();
 			} else {
@@ -82,6 +85,7 @@ public class Main {
 		playerStats = new PlayerStatsFinder(conn);
 		teamStats = new TeamStatsFinder(conn);
 		windStats = new WindStatsFinder(conn);
+		teamSched = new TeamScheduleFinder(conn);
 	}
 
 	public void exit() {
@@ -123,6 +127,14 @@ public class Main {
 	private void searchTeamStats(String line) {
 		try {
 			teamStats.search(line.contains("-n"), line);
+		} catch (MismatchedArgsException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	private void searchTeamSchedule(String line) {
+		try {
+			teamSched.search(line.contains("-n"), line);
 		} catch (MismatchedArgsException e) {
 			System.out.println(e.getMessage());
 		}
