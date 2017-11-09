@@ -84,6 +84,7 @@ public class TeamScheduleFinder {
 		for(Result res: scanner) {
 			printTeamSchedule(res);
 		}
+		System.out.println("-----------------------");
 	}
 	
 	private String getTeamId(String teamName) throws IOException {
@@ -109,10 +110,12 @@ public class TeamScheduleFinder {
 		String opTeam = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("opposing")));
 		String score = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("score")));
 		String opScore = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("op_score")));
-		String home = Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("home")));
+		String home = getTeamId(Bytes.toString(res.getValue(Bytes.toBytes("sched"), Bytes.toBytes("home"))));
 		
-		System.out.println("On " + date + " the " + teamName + (Integer.parseInt(score) > Integer.parseInt(opScore) ? " won " : " lost ") 
-				+ (home.equals("Y") ? " a home " : " an away " ) + " game against the " + opTeam + ".");
-		
+		System.out.println("-----------------------");
+		System.out.println("Date: " + date.substring(4,6) + "/" + date.substring(6) + "/" + date.substring(0,4));
+		System.out.println((home.equals("Y") ? "Home " : "Away " ) + (Integer.parseInt(score) > Integer.parseInt(opScore) ? "Win" : "Loss") );
+		System.out.println("\t" + teamName + "\t" + score);
+		System.out.println("\t" + opTeam + "\t" + opScore);
 	}
 }
