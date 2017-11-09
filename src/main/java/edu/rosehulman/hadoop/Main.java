@@ -85,6 +85,7 @@ public class Main {
 		playerStats = new PlayerStatsFinder(conn);
 		teamStats = new TeamStatsFinder(conn);
 		windStats = new WindStatsFinder(conn);
+		teamSched = new TeamScheduleFinder(conn);
 	}
 
 	public void exit() {
